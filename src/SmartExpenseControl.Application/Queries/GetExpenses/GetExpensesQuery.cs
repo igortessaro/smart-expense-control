@@ -3,7 +3,7 @@ using SmartExpenseControl.Domain.Entities;
 
 namespace SmartExpenseControl.Application.Queries.GetExpenses;
 
-public class GetExpensesQuery : IRequest<IEnumerable<Expense>>
+public record GetExpensesQuery : IRequest<IList<Expense>>
 {
-    public int UserId { get; set; }
+    public int UserId { get; init; }
 }

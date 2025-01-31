@@ -2,11 +2,11 @@ using MediatR;
 
 namespace SmartExpenseControl.Application.Commands.CreateExpense;
 
-public class CreateExpenseCommand : IRequest<int>
+public record CreateExpenseCommand : IRequest<int>
 {
-    public int UserId { get; set; }
-    public int CategoryId { get; set; }
-    public decimal Amount { get; set; }
-    public string Description { get; set; } = string.Empty;
-    public DateTime Date { get; set; }
+    public int UserId { get; init; }
+    public int CategoryId { get; init; }
+    public decimal Amount { get; init; }
+    public string Description { get; init; } = string.Empty;
+    public DateTime Date { get; init; }
 }

@@ -4,11 +4,11 @@ using SmartExpenseControl.Domain.Repositories;
 
 namespace SmartExpenseControl.Application.Queries.GetExpenses;
 
-public class GetExpensesQueryHandler(IExpenseRepository expenseRepository) : IRequestHandler<GetExpensesQuery, IEnumerable<Expense>>
+public class GetExpensesQueryHandler(IExpenseRepository expenseRepository)
+    : IRequestHandler<GetExpensesQuery, IList<Expense>>
 {
-    public async Task<IEnumerable<Expense>> Handle(GetExpensesQuery request, CancellationToken cancellationToken)
+    public Task<IList<Expense>> Handle(GetExpensesQuery request, CancellationToken cancellationToken)
     {
-        return await Task.FromResult(new List<Expense>());
-        // return await _expenseRepository.GetByUserIdAsync(request.UserId);
+        return expenseRepository.GetByUserIdAsync(request.UserId);
     }
 }

@@ -3,7 +3,7 @@ using SmartExpenseControl.Domain.Repositories;
 
 namespace SmartExpenseControl.Domain.Services;
 
-public class ExpenseService(IExpenseRepository expenseRepository)
+public class ExpenseService(IExpenseRepository expenseRepository) : IExpenseService
 {
     public async Task AddExpenseAsync(Expense expense)
     {
