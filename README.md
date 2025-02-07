@@ -61,24 +61,25 @@ Smart Expense Control is an application designed to help users manage their expe
 
 We'll use Domain-Driven Design (DDD) for the backend architecture in C#. Here's a proposed project and folder structure:
 
+```
 smart-expense-control/
 ├── src/
 │ ├── SmartExpenseControl.Api/
 │ ├── SmartExpenseControl.Application/
 │ ├── SmartExpenseControl.Domain/
 │ ├── SmartExpenseControl.Infrastructure/
-│ └── SmartExpenseControl.Shared/
+│ └── SmartExpenseControl.Infrastructure.CrossCutting/
 ├── tests/
 │ ├── SmartExpenseControl.Api.Tests/
 │ ├── SmartExpenseControl.Application.Tests/
 │ ├── SmartExpenseControl.Domain.Tests/
-│ ├── SmartExpenseControl.Infrastructure.Tests/
-│ └── SmartExpenseControl.Shared.Tests/
+│ └── SmartExpenseControl.Infrastructure.Tests/
 └── database/
     └── scripts/
         ├── 001_create_tables.sql
         └── 010_insert_user_roles.sql
     └── docker-compose.yml
+```
 
 ### Database
 
@@ -96,7 +97,6 @@ We'll use Docker Compose to set up the MySQL database. The Docker Compose file i
 4. Implement the backend services in C# using the proposed project structure.
 5. Run the backend services.
 
-Would you like to proceed with the implementation of the backend services in C#?
 ### Database
 
 We'll use MySQL for the database. The database scripts are located in the `database/scripts/` folder.
