@@ -16,6 +16,7 @@ public static class RepositoriesExtension
                 new MySqlServerVersion(new Version(8, 0, 21))));
         _ = services.AddScoped<IUserRepository, UserRepository>();
         _ = services.AddScoped<IExpenseRepository, ExpenseRepository>();
+        _ = services.AddScoped<IUserRoleRepository, UserRoleRepository>();
         return services;
     }
 }

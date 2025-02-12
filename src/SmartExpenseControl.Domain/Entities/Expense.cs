@@ -1,6 +1,6 @@
 namespace SmartExpenseControl.Domain.Entities;
 
-public class Expense
+public sealed class Expense
 {
     private Expense () { }
 

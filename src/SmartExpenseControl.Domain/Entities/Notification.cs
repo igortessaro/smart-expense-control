@@ -1,6 +1,6 @@
 namespace SmartExpenseControl.Domain.Entities;
 
-public class Notification
+public sealed class Notification
 {
 
 }

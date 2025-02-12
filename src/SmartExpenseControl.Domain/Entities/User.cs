@@ -1,6 +1,6 @@
 namespace SmartExpenseControl.Domain.Entities;
 
-public class User
+public sealed class User
 {
     private User() { }
 

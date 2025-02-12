@@ -1,6 +1,6 @@
 namespace SmartExpenseControl.Domain.Entities;
 
-public class ExpenseCategory
+public sealed class ExpenseCategory
 {
 
 }

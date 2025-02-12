@@ -1,6 +1,6 @@
 namespace SmartExpenseControl.Domain.Entities;
 
-public class Budget
+public sealed class Budget
 {
 
 }

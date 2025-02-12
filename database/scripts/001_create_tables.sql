@@ -83,16 +83,16 @@ CREATE TABLE Budgets (
     FOREIGN KEY (updated_by) REFERENCES Users(id)
 );
 
-CREATE TABLE Notifications (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    user_id INT NOT NULL,
-    message TEXT NOT NULL,
-    read BOOLEAN DEFAULT FALSE,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    created_by INT,
-    updated_by INT,
-    FOREIGN KEY (user_id) REFERENCES Users(id),
-    FOREIGN KEY (created_by) REFERENCES Users(id),
-    FOREIGN KEY (updated_by) REFERENCES Users(id)
+CREATE TABLE `Notifications` (
+    `id` INT AUTO_INCREMENT PRIMARY KEY,
+    `user_id` INT NOT NULL,
+    `message` TEXT NOT NULL,
+    `read` boolean default FALSE,
+    `created_at` TIMESTAMP  NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    `updated_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    `created_by` INT,
+    `updated_by` INT,
+    FOREIGN KEY (`user_id`) REFERENCES Users(`id`),
+    FOREIGN KEY (`created_by`) REFERENCES Users(`id`),
+    FOREIGN KEY (`updated_by`) REFERENCES Users(`id`)
 );
