@@ -10,7 +10,7 @@ public class ExpenseRepository(ApplicationDbContext context) : BaseRepository<Ex
     public async Task<IList<Expense>> GetByUserIdAsync(int userId)
     {
         return await DbSet
-            .Where(e => e.UserId == userId)
+            .Where(e => e.CreatedBy == userId)
             .ToListAsync();
     }
 }

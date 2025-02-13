@@ -17,6 +17,7 @@ public static class RepositoriesExtension
         _ = services.AddScoped<IUserRepository, UserRepository>();
         _ = services.AddScoped<IExpenseRepository, ExpenseRepository>();
         _ = services.AddScoped<IUserRoleRepository, UserRoleRepository>();
+        _ = services.AddScoped<IExpenseGroupRepository, ExpenseGroupRepository>();
         return services;
     }
 }

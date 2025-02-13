@@ -11,6 +11,7 @@ _ = builder.Services.AddRepositories(builder.Configuration);
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 _ = builder.Services.AddEndpointsApiExplorer();
 _ = builder.Services.AddSwaggerGen();
+_ = builder.Services.AddRouting(options => options.LowercaseUrls = true);
 
 var app = builder.Build();
 

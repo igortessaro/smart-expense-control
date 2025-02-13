@@ -12,8 +12,8 @@ public class ExpensesController(IMediator mediator) : ControllerBase
     [HttpPost]
     public async Task<IActionResult> CreateExpense(CreateExpenseCommand command)
     {
-        var expenseId = await mediator.Send(command);
-        return CreatedAtAction(nameof(GetExpenses), new { id = expenseId }, expenseId);
+        var createdExpense = await mediator.Send(command);
+        return Created($"api/Expenses/{createdExpense.Id}", createdExpense);
     }
 
     [HttpGet("{userId:int}")]

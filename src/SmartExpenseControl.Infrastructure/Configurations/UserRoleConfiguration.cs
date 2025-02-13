@@ -11,7 +11,7 @@ public sealed class UserRoleConfiguration : IEntityTypeConfiguration<UserRole>
         builder.ToTable("UserRoles");
         builder.HasKey(x => x.Id).HasName("id");
         builder.Property(x => x.Id).ValueGeneratedOnAdd();
-        builder.Property(x => x.Name).HasMaxLength(100).IsRequired();
-        builder.Property(x => x.Description).HasMaxLength(200).IsRequired();
+        builder.Property(x => x.Name).HasColumnName("name").HasMaxLength(255).IsRequired();
+        builder.Property(x => x.Description).HasColumnName("description").HasMaxLength(200);
     }
 }
