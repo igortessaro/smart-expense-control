@@ -25,25 +25,26 @@ public abstract class BaseRepository<T> : IRepository<T> where T : class
         return await DbSet.ToListAsync();
     }
 
-    public async Task AddAsync(T entity)
+    public async Task<T> AddAsync(T entity)
     {
         await DbSet.AddAsync(entity);
         await _context.SaveChangesAsync();
+        return entity;
     }
 
-    public async Task UpdateAsync(T entity)
+    public async Task<T> UpdateAsync(T entity)
     {
         DbSet.Update(entity);
         await _context.SaveChangesAsync();
+        return entity;
     }
 
-    public async Task DeleteAsync(int id)
+    public async Task<int> DeleteAsync(int id)
     {
         var entity = await DbSet.FindAsync(id);
-        if (entity != null)
-        {
-            DbSet.Remove(entity);
-            await _context.SaveChangesAsync();
-        }
+        if (entity is null) return -1;
+
+        DbSet.Remove(entity);
+        return await _context.SaveChangesAsync();
     }
 }
