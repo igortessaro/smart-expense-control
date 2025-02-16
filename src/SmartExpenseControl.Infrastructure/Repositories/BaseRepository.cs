@@ -25,6 +25,8 @@ public abstract class BaseRepository<T> : IRepository<T> where T : class
         return await DbSet.ToListAsync();
     }
 
+    protected IQueryable<T> GetQueryable() => DbSet.AsQueryable();
+
     public async Task<T> AddAsync(T entity)
     {
         await DbSet.AddAsync(entity);

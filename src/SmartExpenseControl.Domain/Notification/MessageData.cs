@@ -32,4 +32,6 @@ public sealed class MessageData<T> : Message
         result.AddError(error);
         return result;
     }
+
+    public MessageData<TParse> ParseTo<TParse>() => MessageData<TParse>.CreateWithErrors(Errors);
 }
