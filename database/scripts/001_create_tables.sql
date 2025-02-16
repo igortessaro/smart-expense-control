@@ -39,6 +39,7 @@ CREATE TABLE Expenses (
     -- category_id INT NOT NULL,
     amount DECIMAL(10, 2),
     payment_method VARCHAR(50) NOT NULL,
+    period VARCHAR(6) NOT NULL,
     -- description TEXT,
     -- date DATE NOT NULL,
     created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,

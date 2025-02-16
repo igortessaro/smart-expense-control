@@ -14,6 +14,7 @@ public class ExpenseConfiguration : IEntityTypeConfiguration<Expense>
         builder.Property(x => x.ExpenseGroupId).HasColumnName("expense_group_id").IsRequired();
         builder.Property(x => x.Name).HasColumnName("name").HasMaxLength(255).IsRequired();
         builder.Property(x => x.Tag).HasColumnName("tag").HasMaxLength(100);
+        builder.Property(x => x.Period).HasColumnName("period").HasMaxLength(6).IsRequired();
         builder.Property(x => x.Amount).HasColumnName("amount");
         builder.Property(x => x.PaymentMethod).HasColumnName("payment_method").HasMaxLength(100);
         builder.Property(x => x.CreatedBy).HasColumnName("created_by").IsRequired();

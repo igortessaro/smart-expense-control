@@ -4,12 +4,13 @@ public sealed class Expense
 {
     private Expense () { }
 
-    public Expense(int expenseGroupId, string name, string tag, decimal? amount, string paymentMethod, int createdBy)
+    public Expense(int expenseGroupId, string name, string tag, string period, decimal? amount, string paymentMethod, int createdBy)
         : this()
     {
         ExpenseGroupId = expenseGroupId;
         Name = name;
         Tag = tag;
+        Period = period;
         Amount = amount;
         PaymentMethod = paymentMethod;
         CreatedBy = createdBy;
@@ -20,6 +21,7 @@ public sealed class Expense
     public int ExpenseGroupId { get; private set; }
     public string Name { get; private set; }
     public string Tag { get; private set; }
+    public string Period { get; private set; }
     public decimal? Amount { get; private set; }
     // cash, credit cards, debit cards, bank transfers, mobile wallets, and digital payments
     public string PaymentMethod { get; private set; }
