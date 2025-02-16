@@ -13,13 +13,13 @@ public class ExpensesController(IMediator mediator) : ControllerBase
     public async Task<IActionResult> CreateExpense(CreateExpenseCommand command)
     {
         var createdExpense = await mediator.Send(command);
-        return Created($"api/Expenses/{createdExpense.Id}", createdExpense);
+        return Created($"api/Expenses/{createdExpense.Data?.Id}", createdExpense);
     }
 
     [HttpGet("{userId:int}")]
     public async Task<IActionResult> GetExpenses(int userId)
     {
         var expenses = await mediator.Send(new GetExpensesQuery { UserId = userId });
-        return Ok(expenses);
+        return Ok(await Task.FromResult(expenses));
     }
 }

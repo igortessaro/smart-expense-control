@@ -4,7 +4,7 @@ public sealed class ExpenseGroup
 {
     private ExpenseGroup() { }
 
-    public ExpenseGroup(string name, string description, int createdBy)
+    public ExpenseGroup(string name, string description, int createdBy) : this()
     {
         Name = name;
         Description = description;
@@ -21,4 +21,9 @@ public sealed class ExpenseGroup
     public DateTime? UpdatedAt { get; private set; }
 
     public IReadOnlyList<Expense> Expenses { get; private set; }
+
+    public static ExpenseGroup CreateDefault(int createdBy)
+    {
+        return new ExpenseGroup("Default Expense Group", "Default Expense Group created automatically", createdBy);
+    }
 }

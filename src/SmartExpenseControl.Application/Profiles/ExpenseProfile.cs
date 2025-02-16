@@ -5,7 +5,7 @@ using SmartExpenseControl.Domain.Entities;
 
 namespace SmartExpenseControl.Application.Profiles;
 
-public class ExpenseProfile : Profile
+public sealed class ExpenseProfile : Profile
 {
     public ExpenseProfile()
     {

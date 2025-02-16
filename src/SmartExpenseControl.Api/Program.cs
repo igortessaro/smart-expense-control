@@ -1,9 +1,10 @@
+using SmartExpenseControl.Api.Filters;
 using SmartExpenseControl.Infrastructure.CrossCutting;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-_ = builder.Services.AddControllers();
+_ = builder.Services.AddControllers( x=> x.Filters.Add<NotificationFilter>());
 _ = builder.Services.AddServices();
 _ = builder.Services.AddCqrs();
 _ = builder.Services.AddRepositories(builder.Configuration);
