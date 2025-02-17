@@ -1,10 +1,9 @@
 using MediatR;
-using SmartExpenseControl.Domain.DataObjectTransfer;
 using SmartExpenseControl.Domain.Notification;
 
 namespace SmartExpenseControl.Application.Commands.CreateExpense;
 
-public record CreateExpenseCommand : IRequest<MessageData<ExpenseSummary>>
+public record CreateExpenseCommand : IRequest<Message>
 {
     public int ExpenseGroupId { get; init; }
     public string Name { get; init; } = string.Empty;

@@ -10,6 +10,6 @@ public sealed class ExpenseProfile : Profile
     public ExpenseProfile()
     {
         CreateMap<CreateExpenseCommand, Expense>().ReverseMap();
-        CreateMap<ExpenseSummary, Expense>().ReverseMap();
+        CreateMap<Expense, ExpenseSummary>().ReverseMap();
     }
 }

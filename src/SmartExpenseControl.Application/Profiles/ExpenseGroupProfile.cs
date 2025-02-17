@@ -8,6 +8,11 @@ public sealed class ExpenseGroupProfile : Profile
 {
     public ExpenseGroupProfile()
     {
-        CreateMap<ExpenseGroupSummary, ExpenseGroup>().ReverseMap();
+        CreateMap<ExpenseGroup, ExpenseGroupSummary>()
+            .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
+            .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name))
+            .ReverseMap()
+            .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
+            .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name));
     }
 }

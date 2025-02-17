@@ -5,5 +5,5 @@ namespace SmartExpenseControl.Domain.Services;
 
 public interface IExpenseGroupService
 {
-    Task<MessageData<ExpenseGroup>> GetOrCreateDefaultAsync(int expenseGroupId, int userId);
+    Task<Message<ExpenseGroup>> GetOrCreateDefaultAsync(int expenseGroupId, int userId);
 }

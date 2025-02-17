@@ -9,6 +9,7 @@ _ = builder.Services.AddServices();
 _ = builder.Services.AddCqrs();
 _ = builder.Services.AddRepositories(builder.Configuration);
 _ = builder.Services.AddMappers();
+_ = builder.Services.AddValidators();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 _ = builder.Services.AddEndpointsApiExplorer();

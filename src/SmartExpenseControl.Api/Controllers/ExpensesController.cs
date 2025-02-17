@@ -2,6 +2,7 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using SmartExpenseControl.Application.Commands.CreateExpense;
 using SmartExpenseControl.Application.Queries.GetExpenses;
+using SmartExpenseControl.Domain.DataObjectTransfer;
 
 namespace SmartExpenseControl.Api.Controllers;
 
@@ -10,14 +11,15 @@ namespace SmartExpenseControl.Api.Controllers;
 public class ExpensesController(IMediator mediator) : ControllerBase
 {
     [HttpPost]
-    public async Task<IActionResult> CreateExpense(CreateExpenseCommand command)
+    public async Task<IActionResult> CreateExpenseAsync(CreateExpenseCommand command)
     {
-        var createdExpense = await mediator.Send(command);
-        return Created($"api/Expenses/{createdExpense.Data?.Id}", createdExpense);
+        var response = await mediator.Send(command);
+        var expense = (ExpenseSummary?)response.Data;
+        return Created($"api/Expenses/{expense?.Id}", response);
     }
 
     [HttpGet("{userId:int}")]
-    public async Task<IActionResult> GetExpenses(int userId)
+    public async Task<IActionResult> GetExpensesAsync(int userId)
     {
         var expenses = await mediator.Send(new GetExpensesQuery { UserId = userId });
         return Ok(await Task.FromResult(expenses));
