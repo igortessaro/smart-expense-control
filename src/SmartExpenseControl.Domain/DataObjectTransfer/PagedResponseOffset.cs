@@ -5,6 +5,6 @@ public class PagedResponseOffset<T>(int? pageNumber, int pageSize, int totalReco
     public int PageNumber { get; init; } = pageNumber ?? 0;
     public int PageSize { get; init; } = pageSize;
     public int TotalRecords { get; init; } = totalRecords;
-    public int TotalPages => (int)Math.Ceiling(TotalRecords / (double)PageSize);
+    public int TotalPages => (int) Math.Ceiling(TotalRecords / (double) PageSize);
     public IReadOnlyList<T> Data { get; init; } = data;
 }

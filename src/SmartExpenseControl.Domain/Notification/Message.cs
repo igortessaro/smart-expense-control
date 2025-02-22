@@ -32,7 +32,7 @@ public class Message<T> : Message where T : class
     {
     }
 
-    public T? GetData() => (T?)base.Data;
+    public T? GetData() => (T?) base.Data;
     public Message<TResult> Parse<TResult>() where TResult : class => new(null, Notifications);
 
     public static Message<T> CreateSuccess(T data) => new(data, []);
