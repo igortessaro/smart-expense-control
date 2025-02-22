@@ -2,7 +2,7 @@ namespace SmartExpenseControl.Domain.Entities;
 
 public sealed class Expense
 {
-    private Expense () { }
+    private Expense() { }
 
     public Expense(int expenseGroupId, string name, string tag, string period, decimal? amount, string paymentMethod, int createdBy)
         : this()

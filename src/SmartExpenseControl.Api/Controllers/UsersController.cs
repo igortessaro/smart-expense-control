@@ -26,16 +26,8 @@ public class UsersController(IMediator mediator) : ControllerBase
     }
 
     [HttpGet("{id:int}")]
-    public async Task<IActionResult> GetUserAsync(int id)
-    {
-        var user = await mediator.Send(new GetUserQuery { UserId = id });
-        return Ok(user);
-    }
+    public async Task<IActionResult> GetUserAsync(int id) => Ok(await mediator.Send(new GetUserQuery(id)));
 
     [HttpGet("roles")]
-    public async Task<IActionResult> GetRolesAsync()
-    {
-        var roles = await mediator.Send(new GetAllRolesQuery());
-        return Ok(roles);
-    }
+    public async Task<IActionResult> GetRolesAsync() => Ok(await mediator.Send(new GetAllRolesQuery()));
 }
