@@ -23,7 +23,9 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore
     - name: Format code
-      run: dotnet format --check
+      run: dotnet format --verify-no-changes
+      env:
+        PATH: ${{ runner.tool_cache }}/dotnet:$PATH
     - name: Build
       run: dotnet build --no-restore
     - name: Test
