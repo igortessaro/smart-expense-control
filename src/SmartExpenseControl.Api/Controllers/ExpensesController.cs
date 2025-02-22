@@ -15,13 +15,9 @@ public class ExpensesController(IMediator mediator) : ControllerBase
     {
         var response = await mediator.Send(command);
         var expense = (ExpenseSummary?)response.Data;
-        return Created($"api/Expenses/{expense?.Id}", response);
+        return CreatedAtAction(nameof(GetAsync), new { id = expense?.Id }, expense?.Id);
     }
 
-    [HttpGet("{userId:int}")]
-    public async Task<IActionResult> GetExpensesAsync(int userId)
-    {
-        var expenses = await mediator.Send(new GetExpensesQuery { UserId = userId });
-        return Ok(await Task.FromResult(expenses));
-    }
+    [HttpGet("{id:int}")]
+    public async Task<IActionResult> GetAsync([FromRoute] int id) => Ok(await mediator.Send(new GetSingleExpenseQuery(id)));
 }

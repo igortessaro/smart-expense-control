@@ -1,6 +1,7 @@
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using SmartExpenseControl.Application.Commands.CreateUser;
+using SmartExpenseControl.Application.Queries.GetExpenses;
 using SmartExpenseControl.Application.Queries.GetRoles;
 using SmartExpenseControl.Application.Queries.GetUser;
 
@@ -10,6 +11,13 @@ namespace SmartExpenseControl.Api.Controllers;
 [Route("api/[controller]")]
 public class UsersController(IMediator mediator) : ControllerBase
 {
+    [HttpGet("{userId:int}/expenses")]
+    public async Task<IActionResult> GetExpensesAsync(
+        [FromRoute] int userId,
+        [FromQuery] int? pageNumber,
+        [FromQuery] int? pageSize) =>
+        Ok(await mediator.Send(new GetExpensesQuery(userId, pageNumber ?? 1, pageSize ?? 10)));
+
     [HttpPost]
     public async Task<IActionResult> CreateUserAsync(CreateUserCommand command)
     {

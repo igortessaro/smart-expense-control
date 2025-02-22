@@ -1,8 +1,9 @@
+using SmartExpenseControl.Domain.DataObjectTransfer;
 using SmartExpenseControl.Domain.Entities;
 
 namespace SmartExpenseControl.Domain.Repositories;
 
 public interface IExpenseRepository : IRepository<Expense>
 {
-    Task<IList<Expense>> GetByUserIdAsync(int userId);
+    Task<PagedResponseOffset<ExpenseSummary>> GetByUserIdAsync(int userId, int pageNumber, int pageSize);
 }
