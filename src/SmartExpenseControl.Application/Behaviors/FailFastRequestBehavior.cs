@@ -10,7 +10,7 @@ public sealed class FailFastRequestBehavior<TRequest, TResponse>(IEnumerable<IVa
 {
     public Task<TResponse> Handle(TRequest request, RequestHandlerDelegate<TResponse> next, CancellationToken cancellationToken)
     {
-        var failures = validators
+        List<ValidationFailure> failures = validators
             .Select(v => v.Validate(request))
             .SelectMany(result => result.Errors)
             .Where(f => f != null)
@@ -23,15 +23,16 @@ public sealed class FailFastRequestBehavior<TRequest, TResponse>(IEnumerable<IVa
 
     private static Task<TResponse> Errors(IList<ValidationFailure> failures)
     {
-        var notifications = failures.Select(x => new Notification(x.ErrorCode, x.ErrorMessage)).ToList();
-        var messageType = typeof(TResponse);
+        List<Notification> notifications = failures.Select(x => new Notification(x.ErrorCode, x.ErrorMessage)).ToList();
+        Type messageType = typeof(TResponse);
 
-        if (messageType.IsGenericType && messageType.GetGenericTypeDefinition() == typeof(Message<>))
+        if (!messageType.IsGenericType || messageType.GetGenericTypeDefinition() != typeof(Message<>))
         {
-            var messageInstance = Activator.CreateInstance(messageType, notifications) as TResponse;
-            return Task.FromResult(messageInstance as TResponse)!;
+            return Task.FromResult(Message.Fail(notifications) as TResponse)!;
         }
 
-        return Task.FromResult(Message.Fail(notifications) as TResponse)!;
+        var messageInstance = Activator.CreateInstance(messageType, notifications) as TResponse;
+        return Task.FromResult(messageInstance as TResponse)!;
+
     }
 }

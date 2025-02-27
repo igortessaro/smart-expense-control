@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using SmartExpenseControl.Application.Commands.CreateExpense;
 using SmartExpenseControl.Application.Queries.GetExpenses;
 using SmartExpenseControl.Domain.DataObjectTransfer;
+using SmartExpenseControl.Domain.Notification;
 
 namespace SmartExpenseControl.Api.Controllers;
 
@@ -13,8 +14,8 @@ public class ExpensesController(IMediator mediator) : ControllerBase
     [HttpPost]
     public async Task<IActionResult> CreateExpenseAsync(CreateExpenseCommand command)
     {
-        var response = await mediator.Send(command);
-        var expense = response.GetData();
+        Message<ExpenseSummary> response = await mediator.Send(command);
+        ExpenseSummary? expense = response.Payload;
         return CreatedAtAction(nameof(GetAsync), new { id = expense?.Id }, response);
     }
 

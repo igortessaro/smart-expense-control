@@ -4,6 +4,8 @@ using SmartExpenseControl.Application.Commands.CreateUser;
 using SmartExpenseControl.Application.Queries.GetExpenses;
 using SmartExpenseControl.Application.Queries.GetRoles;
 using SmartExpenseControl.Application.Queries.GetUser;
+using SmartExpenseControl.Domain.Entities;
+using SmartExpenseControl.Domain.Notification;
 
 namespace SmartExpenseControl.Api.Controllers;
 
@@ -21,8 +23,8 @@ public class UsersController(IMediator mediator) : ControllerBase
     [HttpPost]
     public async Task<IActionResult> CreateUserAsync(CreateUserCommand command)
     {
-        int userId = await mediator.Send(command);
-        return CreatedAtAction(nameof(GetUserAsync), new { id = userId }, userId);
+        Message<User> response = await mediator.Send(command);
+        return CreatedAtAction(nameof(GetUserAsync), new { id = response.Payload?.Id }, response.Payload);
     }
 
     [HttpGet("{id:int}")]

@@ -9,7 +9,7 @@ public sealed class CreateUserValidator : AbstractValidator<CreateUserCommand>
     {
         RuleFor(x => x.Email)
             .EmailAddress()
-            .MustAsync((email, _) => userRepository.ExistsAsync(email, string.Empty));
+            .MustAsync(async (email, _) => await userRepository.ExistsAsync(email, string.Empty));
         RuleFor(x => x.Password).NotEmpty();
         RuleFor(x => x.Username).NotEmpty();
         RuleFor(x => x.RoleId).GreaterThan(0);

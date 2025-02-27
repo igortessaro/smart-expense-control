@@ -16,12 +16,12 @@ public class CreateExpenseHandler(
     public async Task<Message<ExpenseSummary>> Handle(CreateExpenseCommand request, CancellationToken cancellationToken)
     {
         Message<ExpenseGroup> expenseGroupMessage = await expenseGroupService.GetOrCreateDefaultAsync(request.ExpenseGroupId, request.CreatedBy);
-        if (!expenseGroupMessage.IsSuccess) return expenseGroupMessage.Parse<ExpenseSummary>();
+        if (!expenseGroupMessage.IsSuccess) return expenseGroupMessage.Notifications.ToArray();
 
-        var expenseToAdd = mapper.Map<Expense>(request with { ExpenseGroupId = expenseGroupMessage.GetData()!.Id });
+        var expenseToAdd = mapper.Map<Expense>(request with { ExpenseGroupId = expenseGroupMessage.Payload!.Id });
         if (request.PayedBy.HasValue) expenseToAdd.Pay(request.PayedBy, request.PayedAt);
 
         var result = mapper.Map<ExpenseSummary>(await expenseRepository.AddAsync(expenseToAdd));
-        return Message<ExpenseSummary>.Ok(result);
+        return result;
     }
 }
