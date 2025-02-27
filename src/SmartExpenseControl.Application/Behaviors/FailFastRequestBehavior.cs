@@ -24,7 +24,14 @@ public sealed class FailFastRequestBehavior<TRequest, TResponse>(IEnumerable<IVa
     private static Task<TResponse> Errors(IList<ValidationFailure> failures)
     {
         var notifications = failures.Select(x => new Notification(x.ErrorCode, x.ErrorMessage)).ToList();
-        var message = Message.CreateErrors(notifications);
-        return Task.FromResult(message as TResponse)!;
+        var messageType = typeof(TResponse);
+
+        if (messageType.IsGenericType && messageType.GetGenericTypeDefinition() == typeof(Message<>))
+        {
+            var messageInstance = Activator.CreateInstance(messageType, notifications) as TResponse;
+            return Task.FromResult(messageInstance as TResponse)!;
+        }
+
+        return Task.FromResult(Message.Fail(notifications) as TResponse)!;
     }
 }

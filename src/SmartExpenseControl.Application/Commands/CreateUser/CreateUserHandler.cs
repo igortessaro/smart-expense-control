@@ -4,7 +4,7 @@ using SmartExpenseControl.Domain.Repositories;
 
 namespace SmartExpenseControl.Application.Commands.CreateUser;
 
-public class CreateUserCommandHandler(IUserRepository userRepository) : IRequestHandler<CreateUserCommand, int>
+public sealed class CreateUserHandler(IUserRepository userRepository) : IRequestHandler<CreateUserCommand, int>
 {
     public async Task<int> Handle(CreateUserCommand request, CancellationToken cancellationToken)
     {

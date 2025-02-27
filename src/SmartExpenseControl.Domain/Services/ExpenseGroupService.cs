@@ -9,11 +9,11 @@ public sealed class ExpenseGroupService(IExpenseGroupRepository expenseGroupRepo
     public async Task<Message<ExpenseGroup>> GetOrCreateDefaultAsync(int expenseGroupId, int userId)
     {
         var expenseGroup = await expenseGroupRepository.GetByIdAsync(expenseGroupId);
-        if (expenseGroup is not null) return Message<ExpenseGroup>.CreateSuccess(expenseGroup);
+        if (expenseGroup is not null) return Message<ExpenseGroup>.Ok(expenseGroup);
 
         var expenseGroups = await expenseGroupRepository.GetAllByUser(userId);
         return !expenseGroups.Any() ?
-            Message<ExpenseGroup>.CreateSuccess(await expenseGroupRepository.AddAsync(ExpenseGroup.CreateDefault(userId))) :
-            Message<ExpenseGroup>.CreateSuccess(expenseGroups.First());
+            Message<ExpenseGroup>.Ok(await expenseGroupRepository.AddAsync(ExpenseGroup.CreateDefault(userId))) :
+            Message<ExpenseGroup>.Ok(expenseGroups.First());
     }
 }
