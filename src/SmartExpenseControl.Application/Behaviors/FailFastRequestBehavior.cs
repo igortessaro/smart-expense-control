@@ -10,10 +10,15 @@ public sealed class FailFastRequestBehavior<TRequest, TResponse>(IEnumerable<IVa
 {
     public Task<TResponse> Handle(TRequest request, RequestHandlerDelegate<TResponse> next, CancellationToken cancellationToken)
     {
-        List<ValidationFailure> failures = validators
-            .Select(v => v.Validate(request))
-            .SelectMany(result => result.Errors)
-            .Where(f => f != null)
+        List<Task<ValidationResult>> validatorsTask = validators.Select(x => x.ValidateAsync(request, cancellationToken)).ToList();
+        Task.WaitAll(validatorsTask, cancellationToken);
+        List<ValidationFailure> failures = validatorsTask
+            .SelectMany(validationResultTask =>
+            {
+                ValidationResult validationResult = validationResultTask.GetAwaiter().GetResult();
+                return validationResult.Errors;
+            })
+            .Where(error => error != null)
             .ToList();
 
         return failures.Any()
@@ -33,6 +38,5 @@ public sealed class FailFastRequestBehavior<TRequest, TResponse>(IEnumerable<IVa
 
         var messageInstance = Activator.CreateInstance(messageType, notifications) as TResponse;
         return Task.FromResult(messageInstance as TResponse)!;
-
     }
 }

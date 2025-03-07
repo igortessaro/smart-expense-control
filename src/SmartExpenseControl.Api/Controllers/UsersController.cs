@@ -24,7 +24,7 @@ public class UsersController(IMediator mediator) : ControllerBase
     public async Task<IActionResult> CreateUserAsync(CreateUserCommand command)
     {
         Message<User> response = await mediator.Send(command);
-        return CreatedAtAction(nameof(GetUserAsync), new { id = response.Payload?.Id }, response.Payload);
+        return CreatedAtAction(nameof(GetUserAsync), new { id = response.Payload?.Id }, response);
     }
 
     [HttpGet("{id:int}")]
