@@ -13,14 +13,14 @@ public sealed class ExpenseGroup
     }
 
     public int Id { get; private set; }
-    public string Name { get; private set; }
-    public string Description { get; private set; }
+    public string Name { get; private set; } = string.Empty;
+    public string Description { get; private set; } = string.Empty;
     public int CreatedBy { get; private set; }
     public DateTime CreatedAt { get; private set; }
     public int? UpdatedBy { get; private set; }
     public DateTime? UpdatedAt { get; private set; }
 
-    public IReadOnlyList<Expense> Expenses { get; private set; }
+    public IReadOnlyList<Expense> Expenses { get; private set; } = [];
 
     public static ExpenseGroup CreateDefault(int createdBy)
     {

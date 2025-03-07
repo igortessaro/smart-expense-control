@@ -12,7 +12,7 @@ public class ExpenseRepository(ApplicationDbContext context, IMapper mapper) : B
 {
     public async Task<PagedResponseOffset<ExpenseSummary>> GetByUserIdAsync(int userId, int pageNumber, int pageSize)
     {
-        var query = GetQueryable().Where(e => e.CreatedBy == userId);
+        var query = Query().Where(e => e.CreatedBy == userId);
         var totalRecords = await query.CountAsync();
         var data = await query
             .Include(x => x.ExpenseGroup)

@@ -9,5 +9,5 @@ public sealed class ExpenseGroupRepository(ApplicationDbContext context)
     : BaseRepository<ExpenseGroup>(context), IExpenseGroupRepository
 {
     public Task<List<ExpenseGroup>> GetAllByUser(int userId) =>
-        GetQueryable().AsNoTracking().Where(x => x.CreatedBy == userId).ToListAsync();
+        Query().AsNoTracking().Where(x => x.CreatedBy == userId).ToListAsync();
 }

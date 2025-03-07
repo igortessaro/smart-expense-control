@@ -47,13 +47,13 @@ public class Message<T> : Message where T : notnull
 
     public Message(List<Notification> notifications) : base(notifications) { }
 
-    public T Payload { get; }
+    public T? Payload { get; }
 
     public static Message<T> Ok(T payload) => new(payload);
     public static new Message<T> Fail(params Notification[] notifications) => new(notifications);
-    public static implicit operator Message<T>(T payload) => new Message<T>(payload);
-    public static implicit operator Message<T>(Notification notification) => Message<T>.Fail(notification);
-    public static implicit operator Message<T>(Notification[] notifications) => Message<T>.Fail(notifications);
+    public static implicit operator Message<T>(T payload) => new(payload);
+    public static implicit operator Message<T>(Notification notification) => Fail(notification);
+    public static implicit operator Message<T>(Notification[] notifications) => Fail(notifications);
 }
 
 public record Notification(string Key, string Message);

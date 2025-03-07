@@ -21,5 +21,5 @@ public sealed class User
     public DateTime CreatedAt { get; private set; }
     public DateTime UpdatedAt { get; private set; }
 
-    public UserRole Role { get; private set; }
+    public UserRole? Role { get; private set; }
 }
