@@ -8,11 +8,11 @@ using SmartExpenseControl.Infrastructure.Data;
 
 namespace SmartExpenseControl.Infrastructure.Repositories;
 
-public class ExpenseRepository(ApplicationDbContext context, IMapper mapper) : BaseRepository<Expense>(context), IExpenseRepository
+public sealed class ExpenseRepository(ApplicationDbContext context, IMapper mapper) : BaseRepository<Expense>(context), IExpenseRepository
 {
-    public async Task<PagedResponseOffset<ExpenseSummary>> GetByUserIdAsync(int userId, int pageNumber, int pageSize)
+    public async Task<PagedResponseOffset<ExpenseSummary>> GetByUserIdAsync(int userId, string period, int pageNumber, int pageSize)
     {
-        var query = Query().Where(e => e.CreatedBy == userId);
+        var query = Query().Where(e => e.CreatedBy == userId && e.Period == period);
         var totalRecords = await query.CountAsync();
         var data = await query
             .Include(x => x.ExpenseGroup)

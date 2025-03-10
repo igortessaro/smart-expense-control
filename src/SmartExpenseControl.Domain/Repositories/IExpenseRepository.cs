@@ -5,5 +5,5 @@ namespace SmartExpenseControl.Domain.Repositories;
 
 public interface IExpenseRepository : IRepository<Expense>
 {
-    Task<PagedResponseOffset<ExpenseSummary>> GetByUserIdAsync(int userId, int pageNumber, int pageSize);
+    Task<PagedResponseOffset<ExpenseSummary>> GetByUserIdAsync(int userId, string period, int pageNumber, int pageSize);
 }
