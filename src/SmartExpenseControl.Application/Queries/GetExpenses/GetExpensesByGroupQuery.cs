@@ -1,6 +1,6 @@
 using SmartExpenseControl.Domain.DataObjectTransfer;
 
-namespace SmartExpenseControl.Application.Queries.GetExpensesByGroup;
+namespace SmartExpenseControl.Application.Queries.GetExpenses;
 
 public sealed class GetExpensesByGroupQuery(int id, string period, int pageNumber, int pageSize)
     : PaginationQuery<ExpenseSummary>(pageNumber, pageSize)
