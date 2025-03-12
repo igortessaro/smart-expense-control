@@ -1,6 +1,7 @@
 using FluentValidation;
+using SmartExpenseControl.Application.Expenses.Commands;
 
-namespace SmartExpenseControl.Application.Commands.CreateExpense;
+namespace SmartExpenseControl.Application.Expenses.Validators;
 
 public sealed class CreateExpenseValidator : AbstractValidator<CreateExpenseCommand>
 {

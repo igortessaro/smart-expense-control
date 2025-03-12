@@ -1,6 +1,6 @@
 using FluentValidation;
 using Microsoft.Extensions.DependencyInjection;
-using SmartExpenseControl.Application.Commands.CreateExpense;
+using SmartExpenseControl.Application.Expenses.Validators;
 
 namespace SmartExpenseControl.Infrastructure.CrossCutting;
 

@@ -2,7 +2,7 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using SmartExpenseControl.Application.Commands.CreateExpenseGroup;
 using SmartExpenseControl.Application.Commands.UpdateExpenseGroup;
-using SmartExpenseControl.Application.Queries.GetExpenses;
+using SmartExpenseControl.Application.Expenses.Queries;
 
 namespace SmartExpenseControl.Api.Controllers;
 

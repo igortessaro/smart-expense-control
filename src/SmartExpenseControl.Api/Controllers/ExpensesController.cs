@@ -1,8 +1,7 @@
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using SmartExpenseControl.Application.Commands.CreateExpense;
-using SmartExpenseControl.Application.Commands.UpdateExpense;
-using SmartExpenseControl.Application.Queries.GetExpenses;
+using SmartExpenseControl.Application.Expenses.Commands;
+using SmartExpenseControl.Application.Expenses.Queries;
 using SmartExpenseControl.Domain.DataObjectTransfer;
 using SmartExpenseControl.Domain.Notification;
 
@@ -24,7 +23,7 @@ public class ExpensesController(IMediator mediator) : ControllerBase
     public async Task<IActionResult> GetAsync([FromRoute] int id) => Ok(await mediator.Send(new GetSingleExpenseQuery(id)));
 
     [HttpPut("{id:int}")]
-    public Task<IActionResult> UpdateAsync([FromRoute] int id, [FromBody] UpdateExpenseCommand command) => throw new NotImplementedException();
+    public async Task<IActionResult> UpdateAsync([FromRoute] int id, [FromBody] UpdateExpenseCommand command) => Ok(await mediator.Send(command with { Id = id }));
 
     [HttpDelete("{id:int}")]
     public Task<IActionResult> DeleteAsync([FromRoute] int id) => throw new NotImplementedException();

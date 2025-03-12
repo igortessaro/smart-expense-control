@@ -1,9 +1,9 @@
 using AutoMapper;
-using SmartExpenseControl.Application.Commands.CreateExpense;
+using SmartExpenseControl.Application.Expenses.Commands;
 using SmartExpenseControl.Domain.DataObjectTransfer;
 using SmartExpenseControl.Domain.Entities;
 
-namespace SmartExpenseControl.Application.Profiles;
+namespace SmartExpenseControl.Application.Expenses;
 
 public sealed class ExpenseProfile : Profile
 {
@@ -11,5 +11,6 @@ public sealed class ExpenseProfile : Profile
     {
         CreateMap<CreateExpenseCommand, Expense>().ReverseMap();
         CreateMap<Expense, ExpenseSummary>().ReverseMap();
+        CreateMap<UpdateExpenseCommand, Expense>().ReverseMap();
     }
 }
