@@ -11,9 +11,9 @@ public static class RepositoriesExtension
 {
     public static IServiceCollection AddRepositories(this IServiceCollection services, IConfiguration configuration)
     {
-        _ = services.AddDbContext<ApplicationDbContext>(options =>
-            options.UseMySql(configuration.GetConnectionString("DefaultConnection"),
-                new MySqlServerVersion(new Version(8, 0, 21))));
+        var mySqlVersion = new MySqlServerVersion(new Version(8, 0, 21));
+        string? connectionString = configuration.GetConnectionString("DefaultConnection");
+        _ = services.AddDbContext<ApplicationDbContext>(options => options.UseMySql(connectionString, mySqlVersion));
         _ = services.AddScoped<IUserRepository, UserRepository>();
         _ = services.AddScoped<IExpenseRepository, ExpenseRepository>();
         _ = services.AddScoped<IUserRoleRepository, UserRoleRepository>();
