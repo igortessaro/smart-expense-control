@@ -15,14 +15,14 @@ public abstract class BaseRepository<T> : IRepository<T> where T : class
         _dbSet = _context.Set<T>();
     }
 
-    public async Task<T?> GetByIdAsync(int id)
+    public async Task<T?> GetAsync(int id)
     {
         return await _dbSet.FindAsync(id);
     }
 
     public async Task<IList<T>> GetAllAsync()
     {
-        return await _dbSet.ToListAsync();
+        return await Query().ToListAsync();
     }
 
     protected IQueryable<T> Query() => _dbSet.AsQueryable();

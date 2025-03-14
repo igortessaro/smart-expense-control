@@ -5,8 +5,6 @@ using SmartExpenseControl.Application.Commands.UpdateUser;
 using SmartExpenseControl.Application.Expenses.Queries;
 using SmartExpenseControl.Application.Queries.GetRoles;
 using SmartExpenseControl.Application.Queries.GetUser;
-using SmartExpenseControl.Domain.Entities;
-using SmartExpenseControl.Domain.Notification;
 
 namespace SmartExpenseControl.Api.Controllers;
 
@@ -23,6 +21,7 @@ public sealed class UsersController(IMediator mediator) : ControllerBase
         Ok(await mediator.Send(new GetExpensesQuery(id, period, pageNumber ?? 1, pageSize ?? 10)));
 
     [HttpGet("{id:int}")]
+    [ActionName(nameof(GetAsync))]
     public async Task<IActionResult> GetAsync([FromRoute] int id) => Ok(await mediator.Send(new GetUserQuery(id)));
 
     [Obsolete]
@@ -32,7 +31,7 @@ public sealed class UsersController(IMediator mediator) : ControllerBase
     [HttpPost]
     public async Task<IActionResult> CreateAsync([FromBody] CreateUserCommand command)
     {
-        Message<User> response = await mediator.Send(command);
+        var response = await mediator.Send(command);
         return CreatedAtAction(nameof(GetAsync), new { id = response.Payload?.Id }, response);
     }
 

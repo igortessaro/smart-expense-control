@@ -4,7 +4,7 @@ using SmartExpenseControl.Domain.Entities;
 
 namespace SmartExpenseControl.Infrastructure.Configurations;
 
-public class ExpenseConfiguration : IEntityTypeConfiguration<Expense>
+public sealed class ExpenseConfiguration : IEntityTypeConfiguration<Expense>
 {
     public void Configure(EntityTypeBuilder<Expense> builder)
     {

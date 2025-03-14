@@ -2,8 +2,7 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using SmartExpenseControl.Application.Expenses.Commands;
 using SmartExpenseControl.Application.Expenses.Queries;
-using SmartExpenseControl.Domain.DataObjectTransfer;
-using SmartExpenseControl.Domain.Notification;
+using System.Net.Mime;
 
 namespace SmartExpenseControl.Api.Controllers;
 
@@ -14,11 +13,12 @@ public class ExpensesController(IMediator mediator) : ControllerBase
     [HttpPost]
     public async Task<IActionResult> CreateAsync(CreateExpenseCommand command)
     {
-        Message<ExpenseSummary> response = await mediator.Send(command);
+        var response = await mediator.Send(command);
         return CreatedAtAction(nameof(GetAsync), new { id = response.Payload?.Id }, response);
     }
 
     [HttpGet("{id:int}")]
+    [ActionName(nameof(GetAsync))]
     public async Task<IActionResult> GetAsync([FromRoute] int id) => Ok(await mediator.Send(new GetSingleExpenseQuery(id)));
 
     [HttpPut("{id:int}")]

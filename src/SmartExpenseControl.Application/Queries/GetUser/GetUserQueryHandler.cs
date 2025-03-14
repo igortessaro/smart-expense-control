@@ -8,6 +8,6 @@ public class GetUserQueryHandler(IUserRepository userRepository) : IRequestHandl
 {
     public Task<User?> Handle(GetUserQuery request, CancellationToken cancellationToken)
     {
-        return userRepository.GetByIdAsync(request.UserId);
+        return userRepository.GetAsync(request.UserId);
     }
 }

@@ -5,7 +5,7 @@ using SmartExpenseControl.Infrastructure.Data;
 
 namespace SmartExpenseControl.Infrastructure.Repositories;
 
-public class UserRepository(ApplicationDbContext context) : BaseRepository<User>(context), IUserRepository
+public sealed class UserRepository(ApplicationDbContext context) : BaseRepository<User>(context), IUserRepository
 {
     public Task<bool> ExistsAsync(string email, string username)
     {

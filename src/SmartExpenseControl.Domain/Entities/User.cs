@@ -19,7 +19,7 @@ public sealed class User
     public string PasswordHash { get; private set; } = string.Empty;
     public int RoleId { get; private set; }
     public DateTime CreatedAt { get; private set; }
-    public DateTime UpdatedAt { get; private set; }
+    public DateTime? UpdatedAt { get; private set; }
 
     public UserRole? Role { get; private set; }
 }
