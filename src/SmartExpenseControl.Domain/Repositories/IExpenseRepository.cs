@@ -7,4 +7,6 @@ public interface IExpenseRepository : IRepository<Expense>
 {
     Task<PagedResponseOffset<ExpenseSummary>> GetPagedAsync(PagedRequest pagedRequest, int? userId, string period,
         int? expenseGroupId);
+
+    Task<bool> ExistsAsync(int id);
 }

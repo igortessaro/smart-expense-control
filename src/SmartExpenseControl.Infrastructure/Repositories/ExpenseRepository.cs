@@ -12,7 +12,7 @@ public sealed class ExpenseRepository(ApplicationDbContext context, IMapper mapp
 {
     public async Task<PagedResponseOffset<ExpenseSummary>> GetPagedAsync(PagedRequest pagedRequest, int? userId, string period, int? expenseGroupId)
     {
-        IQueryable<Expense> query = Query();
+        var query = Query();
         if (userId.HasValue) query = query.Where(x => x.CreatedBy == userId);
         if (!string.IsNullOrEmpty(period)) query = query.Where(x => x.Period == period);
         if (expenseGroupId.HasValue) query = query.Where(x => x.ExpenseGroupId == expenseGroupId);
@@ -27,4 +27,6 @@ public sealed class ExpenseRepository(ApplicationDbContext context, IMapper mapp
 
         return new PagedResponseOffset<ExpenseSummary>(pagedRequest.PageNumber, pagedRequest.PageSize, totalRecords, data);
     }
+
+    public Task<bool> ExistsAsync(int id) => Query().AnyAsync(x => x.Id == id);
 }

@@ -15,17 +15,11 @@ public abstract class BaseRepository<T> : IRepository<T> where T : class
         _dbSet = _context.Set<T>();
     }
 
-    public async Task<T?> GetAsync(int id)
-    {
-        return await _dbSet.FindAsync(id);
-    }
+    public async Task<T?> GetAsync(int id) => await _dbSet.FindAsync(id);
 
-    public async Task<IList<T>> GetAllAsync()
-    {
-        return await Query().ToListAsync();
-    }
+    public async Task<IList<T>> GetAllAsync() => await Query().ToListAsync();
 
-    protected IQueryable<T> Query() => _dbSet.AsQueryable();
+    protected IQueryable<T> Query(bool noTracking = true) => noTracking ? _dbSet.AsQueryable().AsNoTracking() : _dbSet.AsQueryable();
 
     public async Task<T> AddAsync(T entity)
     {
@@ -43,7 +37,7 @@ public abstract class BaseRepository<T> : IRepository<T> where T : class
 
     public async Task<int> DeleteAsync(int id)
     {
-        T? entity = await _dbSet.FindAsync(id);
+        var entity = await _dbSet.FindAsync(id);
         if (entity is null) return -1;
 
         _dbSet.Remove(entity);

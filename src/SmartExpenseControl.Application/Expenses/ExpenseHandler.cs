@@ -14,11 +14,12 @@ public class ExpenseHandler(
     IExpenseRepository expenseRepository,
     IExpenseGroupService expenseGroupService,
     IMapper mapper) :
-        IRequestHandler<CreateExpenseCommand, Message<ExpenseSummary>>,
-        IRequestHandler<UpdateExpenseCommand, Message<ExpenseSummary>>,
-        IRequestHandler<GetExpensesQuery, PagedResponseOffset<ExpenseSummary>>,
-        IRequestHandler<GetSingleExpenseQuery, ExpenseSummary>,
-        IRequestHandler<GetExpensesByGroupQuery, PagedResponseOffset<ExpenseSummary>>
+    IRequestHandler<CreateExpenseCommand, Message<ExpenseSummary>>,
+    IRequestHandler<UpdateExpenseCommand, Message<ExpenseSummary>>,
+    IRequestHandler<GetExpensesQuery, PagedResponseOffset<ExpenseSummary>>,
+    IRequestHandler<GetSingleExpenseQuery, ExpenseSummary>,
+    IRequestHandler<GetExpensesByGroupQuery, PagedResponseOffset<ExpenseSummary>>,
+    IRequestHandler<DeleteExpenseCommand, Message>
 {
     public async Task<Message<ExpenseSummary>> Handle(CreateExpenseCommand request, CancellationToken cancellationToken)
     {
@@ -34,8 +35,10 @@ public class ExpenseHandler(
 
     public async Task<Message<ExpenseSummary>> Handle(UpdateExpenseCommand request, CancellationToken cancellationToken)
     {
-        var expense = mapper.Map<Expense>(request);
-        var result = mapper.Map<ExpenseSummary>(await expenseRepository.UpdateAsync(expense));
+        var expense = await expenseRepository.GetAsync(request.Id);
+        _ = expense?.Updated(request.Name, request.Tag, request.Period, request.Amount, request.PaymentMethod, request.UpdatedBy);
+        if (request.PayedBy.HasValue) expense?.Pay(request.PayedBy, request.PayedAt);
+        var result = mapper.Map<ExpenseSummary>(await expenseRepository.UpdateAsync(expense!));
         return result;
     }
 
@@ -47,4 +50,10 @@ public class ExpenseHandler(
 
     public Task<PagedResponseOffset<ExpenseSummary>> Handle(GetExpensesByGroupQuery request, CancellationToken cancellationToken) =>
         expenseRepository.GetPagedAsync(new PagedRequest(request.PageNumber, request.PageSize), null, request.Period, request.Id);
+
+    public async Task<Message> Handle(DeleteExpenseCommand request, CancellationToken cancellationToken)
+    {
+        await expenseRepository.DeleteAsync(request.Id);
+        return Message.Ok();
+    }
 }

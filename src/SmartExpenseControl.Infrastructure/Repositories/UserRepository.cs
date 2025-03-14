@@ -9,7 +9,7 @@ public sealed class UserRepository(ApplicationDbContext context) : BaseRepositor
 {
     public Task<bool> ExistsAsync(string email, string username)
     {
-        IQueryable<User> query = Query().AsNoTracking();
+        var query = Query();
         if (!string.IsNullOrEmpty(email)) query = query.Where(u => u.Email == email);
         if (!string.IsNullOrEmpty(username)) query = query.Where(u => u.UserName == username);
 

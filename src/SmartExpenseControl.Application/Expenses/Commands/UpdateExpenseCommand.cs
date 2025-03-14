@@ -12,7 +12,7 @@ public record UpdateExpenseCommand() : IRequest<Message<ExpenseSummary>>
     public string Period { get; init; } = string.Empty;
     public decimal? Amount { get; init; }
     public string PaymentMethod { get; init; } = string.Empty;
-    public int? UpdatedBy { get; init; }
+    public int UpdatedBy { get; init; }
     public int? PayedBy { get; init; }
     public DateTime? PayedAt { get; init; }
 }

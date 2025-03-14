@@ -4,7 +4,8 @@ public sealed class Expense
 {
     private Expense() { }
 
-    public Expense(int expenseGroupId, string name, string tag, string period, decimal? amount, string paymentMethod, int createdBy)
+    public Expense(int expenseGroupId, string name, string tag, string period, decimal? amount, string paymentMethod,
+        int createdBy)
         : this()
     {
         ExpenseGroupId = expenseGroupId;
@@ -22,7 +23,9 @@ public sealed class Expense
     public string Name { get; private set; } = string.Empty;
     public string Tag { get; private set; } = string.Empty;
     public string Period { get; private set; } = string.Empty;
+
     public decimal? Amount { get; private set; }
+
     // cash, credit cards, debit cards, bank transfers, mobile wallets, and digital payments
     public string PaymentMethod { get; private set; } = string.Empty;
     public int CreatedBy { get; private set; }
@@ -34,9 +37,22 @@ public sealed class Expense
 
     public ExpenseGroup? ExpenseGroup { get; private set; }
 
-    public void Pay(int? payedBy, DateTime? payedAt)
+    public Expense Pay(int? payedBy, DateTime? payedAt)
     {
         PayedAt = payedAt;
         PayedBy = payedBy;
+        return this;
+    }
+
+    public Expense Updated(string name, string tag, string period, decimal? amount, string paymentMethod, int updatedBy)
+    {
+        if (!string.IsNullOrEmpty(name)) Name = name;
+        if (!string.IsNullOrEmpty(tag)) Tag = tag;
+        if (!string.IsNullOrEmpty(period)) Period = period;
+        if (amount.HasValue) Amount = amount;
+        if (!string.IsNullOrEmpty(paymentMethod)) PaymentMethod = paymentMethod;
+        UpdatedBy = updatedBy;
+        UpdatedAt = DateTime.UtcNow;
+        return this;
     }
 }
