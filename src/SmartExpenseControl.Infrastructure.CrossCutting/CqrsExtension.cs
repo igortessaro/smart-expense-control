@@ -1,7 +1,6 @@
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using SmartExpenseControl.Application.Behaviors;
-using SmartExpenseControl.Application.Commands.CreateUser;
 using SmartExpenseControl.Application.Users.Commands;
 
 namespace SmartExpenseControl.Infrastructure.CrossCutting;

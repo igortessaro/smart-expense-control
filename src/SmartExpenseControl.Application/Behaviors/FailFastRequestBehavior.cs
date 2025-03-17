@@ -28,8 +28,8 @@ public sealed class FailFastRequestBehavior<TRequest, TResponse>(IEnumerable<IVa
 
     private static Task<TResponse> Errors(IList<ValidationFailure> failures)
     {
-        List<Notification> notifications = failures.Select(x => new Notification(x.ErrorCode, x.ErrorMessage)).ToList();
-        Type messageType = typeof(TResponse);
+        var notifications = failures.Select(x => new Notification(x.ErrorCode, x.ErrorMessage)).ToList();
+        var messageType = typeof(TResponse);
 
         if (!messageType.IsGenericType || messageType.GetGenericTypeDefinition() != typeof(Message<>))
         {

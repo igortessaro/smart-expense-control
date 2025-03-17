@@ -15,7 +15,7 @@ public sealed class UpdateExpenseValidator : AbstractValidator<UpdateExpenseComm
         RuleFor(x => x.PayedAt).NotNull().When(x => x.PayedBy.HasValue);
         RuleFor(x => x.Id)
             .MustAsync(async (id, _) => await repository.ExistsAsync(id))
-            .WithMessage("Expense don't exist");
+            .WithMessage("Expense doesn't exist");
         RuleFor(x => x.UpdatedBy).GreaterThan(0);
     }
 }

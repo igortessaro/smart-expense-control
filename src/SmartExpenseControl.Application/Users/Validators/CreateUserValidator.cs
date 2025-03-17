@@ -2,7 +2,7 @@ using FluentValidation;
 using SmartExpenseControl.Application.Users.Commands;
 using SmartExpenseControl.Domain.Repositories;
 
-namespace SmartExpenseControl.Application.Commands.CreateUser;
+namespace SmartExpenseControl.Application.Users.Validators;
 
 public sealed class CreateUserValidator : AbstractValidator<CreateUserCommand>
 {
@@ -20,6 +20,6 @@ public sealed class CreateUserValidator : AbstractValidator<CreateUserCommand>
         RuleFor(x => x.RoleId).GreaterThan(0);
         RuleFor(x => x.RoleId)
             .MustAsync(async (roleId, _) => await userRoleRepository.ExistsAsync(roleId))
-            .WithMessage("Role don't exist");
+            .WithMessage("Role doesn't exist");
     }
 }

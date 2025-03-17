@@ -1,10 +1,10 @@
 using MediatR;
-using SmartExpenseControl.Domain.Entities;
+using SmartExpenseControl.Domain.DataObjectTransfer;
 using SmartExpenseControl.Domain.Notification;
 
 namespace SmartExpenseControl.Application.Users.Commands;
 
-public record CreateUserCommand : IRequest<Message<User>>
+public record CreateUserCommand : IRequest<Message<UserSummary>>
 {
     public string Username { get; set; } = string.Empty;
     public string Email { get; set; } = string.Empty;

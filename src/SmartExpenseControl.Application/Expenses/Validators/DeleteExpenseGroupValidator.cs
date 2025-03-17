@@ -10,6 +10,6 @@ public sealed class DeleteExpenseGroupValidator : AbstractValidator<DeleteExpens
     {
         RuleFor(x => x.Id)
             .MustAsync(async (id, _) => await repository.ExistsAsync(id))
-            .WithMessage("Expense group don't exist");
+            .WithMessage("Expense group does not exist");
     }
 }

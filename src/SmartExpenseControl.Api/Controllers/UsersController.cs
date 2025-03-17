@@ -20,7 +20,7 @@ public sealed class UsersController(IMediator mediator) : ControllerBase
 
     [HttpGet("{id:int}")]
     [ActionName(nameof(GetAsync))]
-    public async Task<IActionResult> GetAsync([FromRoute] int id) => Ok(await mediator.Send(new GetUserQuery(id)));
+    public async Task<IActionResult> GetAsync([FromRoute] int id) => Ok(await mediator.Send(new GetSingleUserQuery(id)));
 
     [Obsolete]
     [HttpGet("roles")]

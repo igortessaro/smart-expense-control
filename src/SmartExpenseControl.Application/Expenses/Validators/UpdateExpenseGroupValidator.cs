@@ -10,7 +10,7 @@ public sealed class UpdateExpenseGroupValidator : AbstractValidator<UpdateExpens
     {
         RuleFor(x => x.Id)
             .MustAsync(async (id, _) => await expenseGroupRepository.ExistsAsync(id))
-            .WithMessage("Expense group don't exist");
+            .WithMessage("Expense group doesn't exist");
         RuleFor(x => x.UpdatedBy)
             .MustAsync(async (id, _) => await userRepository.ExistsAsync(id))
             .WithMessage("User doesn't exist");
