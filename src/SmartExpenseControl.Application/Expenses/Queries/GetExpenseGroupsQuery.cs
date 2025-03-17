@@ -1,4 +1,3 @@
-using SmartExpenseControl.Application.Queries;
 using SmartExpenseControl.Domain.DataObjectTransfer;
 
 namespace SmartExpenseControl.Application.Expenses.Queries;
