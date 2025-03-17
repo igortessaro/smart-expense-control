@@ -5,4 +5,5 @@ namespace SmartExpenseControl.Domain.Repositories;
 public interface IUserRepository : IRepository<User>
 {
     Task<bool> ExistsAsync(string email, string username);
+    Task<bool> ExistsAsync(int id);
 }

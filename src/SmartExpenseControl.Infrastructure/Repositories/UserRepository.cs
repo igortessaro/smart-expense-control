@@ -15,4 +15,6 @@ public sealed class UserRepository(ApplicationDbContext context) : BaseRepositor
 
         return query.AnyAsync();
     }
+
+    public Task<bool> ExistsAsync(int id) => Query().AnyAsync(x => x.Id == id);
 }

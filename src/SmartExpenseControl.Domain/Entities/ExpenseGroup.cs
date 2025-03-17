@@ -20,10 +20,21 @@ public sealed class ExpenseGroup
     public int? UpdatedBy { get; private set; }
     public DateTime? UpdatedAt { get; private set; }
 
+    // TODO: Create a property to set the user owner and another property to set the users that can see this group
+
     public IReadOnlyList<Expense> Expenses { get; private set; } = [];
 
     public static ExpenseGroup CreateDefault(int createdBy)
     {
         return new ExpenseGroup("Default Expense Group", "Default Expense Group created automatically", createdBy);
+    }
+
+    public ExpenseGroup Update(string name, string description, int updatedBy)
+    {
+        if (!string.IsNullOrEmpty(name)) Name = name;
+        if (!string.IsNullOrEmpty(description)) Description = description;
+        UpdatedBy = updatedBy;
+        UpdatedAt = DateTime.UtcNow;
+        return this;
     }
 }

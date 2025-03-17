@@ -17,7 +17,7 @@ public sealed class ExpenseRepository(ApplicationDbContext context, IMapper mapp
         if (!string.IsNullOrEmpty(period)) query = query.Where(x => x.Period == period);
         if (expenseGroupId.HasValue) query = query.Where(x => x.ExpenseGroupId == expenseGroupId);
         int totalRecords = await query.CountAsync();
-        List<ExpenseSummary> data = await query
+        var data = await query
             .Include(x => x.ExpenseGroup)
             .OrderBy(x => x.Id)
             .Skip((pagedRequest.PageNumber - 1) * pagedRequest.PageSize)

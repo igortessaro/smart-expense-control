@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using SmartExpenseControl.Domain.Entities;
 using SmartExpenseControl.Domain.Repositories;
 using SmartExpenseControl.Infrastructure.Data;
 
@@ -18,6 +19,8 @@ public abstract class BaseRepository<T> : IRepository<T> where T : class
     public async Task<T?> GetAsync(int id) => await _dbSet.FindAsync(id);
 
     public async Task<IList<T>> GetAllAsync() => await Query().ToListAsync();
+
+    protected IQueryable<T> GetPagedQueryAsync(int pageNumber, int pageSize) => Query().Skip((pageNumber - 1) * pageSize).Take(pageSize);
 
     protected IQueryable<T> Query(bool noTracking = true) => noTracking ? _dbSet.AsQueryable().AsNoTracking() : _dbSet.AsQueryable();
 

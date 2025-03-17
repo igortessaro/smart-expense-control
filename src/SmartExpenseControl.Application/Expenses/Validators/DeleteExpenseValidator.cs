@@ -6,10 +6,10 @@ namespace SmartExpenseControl.Application.Expenses.Validators;
 
 public sealed class DeleteExpenseValidator : AbstractValidator<DeleteExpenseCommand>
 {
-    public DeleteExpenseValidator(IExpenseRepository expenseRepository)
+    public DeleteExpenseValidator(IExpenseRepository repository)
     {
         RuleFor(x => x.Id)
-            .MustAsync(async (id, _) => await expenseRepository.ExistsAsync(id))
+            .MustAsync(async (id, _) => await repository.ExistsAsync(id))
             .WithMessage("Expense don't exist");
     }
 }

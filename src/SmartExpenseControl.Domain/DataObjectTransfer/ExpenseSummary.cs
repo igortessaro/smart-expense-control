@@ -16,5 +16,3 @@ public record ExpenseSummary
     public DateTime? PayedAt { get; init; }
     public required ExpenseGroupSummary ExpenseGroup { get; init; }
 }
-
-public record ExpenseGroupSummary(int Id, string Name);
