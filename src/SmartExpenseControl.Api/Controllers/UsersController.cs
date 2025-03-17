@@ -1,6 +1,5 @@
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using SmartExpenseControl.Application.Commands.CreateUser;
 using SmartExpenseControl.Application.Expenses.Queries;
 using SmartExpenseControl.Application.Users.Commands;
 using SmartExpenseControl.Application.Users.Queries;
