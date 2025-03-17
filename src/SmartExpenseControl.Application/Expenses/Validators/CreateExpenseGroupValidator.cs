@@ -14,7 +14,7 @@ public sealed class CreateExpenseGroupValidator : AbstractValidator<CreateExpens
             .MustAsync(async (id, _) => await userRepository.ExistsAsync(id))
             .WithMessage("User doesn't exist");
         RuleFor(x => new { GroupName = x.Name, UserId = x.CreatedBy })
-            .Must(x => !expenseGroupRepository.ExistsAsync(x.GroupName, x.UserId).GetAwaiter().GetResult())
+            .Must(expenseGroup => !expenseGroupRepository.ExistsAsync(expenseGroup.GroupName, expenseGroup.UserId).GetAwaiter().GetResult())
             .WithMessage("Group already exists");
     }
 }

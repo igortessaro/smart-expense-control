@@ -22,4 +22,12 @@ public sealed class User
     public DateTime? UpdatedAt { get; private set; }
 
     public UserRole Role { get; private set; }
+
+    public User Update(string userName, string email, int roleId)
+    {
+        if (!string.IsNullOrEmpty(userName)) UserName = userName;
+        if (!string.IsNullOrEmpty(email)) Email = email;
+        if (roleId > 0) RoleId = roleId;
+        return this;
+    }
 }

@@ -34,11 +34,11 @@ public sealed class UsersController(IMediator mediator) : ControllerBase
     }
 
     [HttpPut("{id:int}")]
-    public Task<IActionResult> PutAsync([FromRoute] int id, [FromBody] UpdateUserCommand command) => throw new NotImplementedException();
+    public async Task<IActionResult> PutAsync([FromRoute] int id, [FromBody] UpdateUserCommand command) => Ok(await mediator.Send(command));
 
     [HttpPatch("{id:int}/password")]
-    public Task<IActionResult> PatchAsync([FromRoute] int id, [FromBody] UpdatePasswordCommand command) => throw new NotImplementedException();
+    public async Task<IActionResult> PatchAsync([FromRoute] int id, [FromBody] UpdatePasswordCommand command) => Ok(await mediator.Send(command));
 
     [HttpDelete("{id:int}")]
-    public Task<IActionResult> DeleteAsync([FromRoute] int id) => throw new NotImplementedException();
+    public async Task<IActionResult> DeleteAsync([FromRoute] int id) => Ok(await mediator.Send(new DeleteUserCommand(id)));
 }
