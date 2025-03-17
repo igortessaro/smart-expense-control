@@ -2,7 +2,7 @@ using MediatR;
 using SmartExpenseControl.Domain.Entities;
 using SmartExpenseControl.Domain.Notification;
 
-namespace SmartExpenseControl.Application.Commands.CreateUser;
+namespace SmartExpenseControl.Application.Users.Commands;
 
 public record CreateUserCommand : IRequest<Message<User>>
 {

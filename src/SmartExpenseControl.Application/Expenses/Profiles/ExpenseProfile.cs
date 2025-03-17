@@ -3,7 +3,7 @@ using SmartExpenseControl.Application.Expenses.Commands;
 using SmartExpenseControl.Domain.DataObjectTransfer;
 using SmartExpenseControl.Domain.Entities;
 
-namespace SmartExpenseControl.Application.Expenses;
+namespace SmartExpenseControl.Application.Expenses.Profiles;
 
 public sealed class ExpenseProfile : Profile
 {

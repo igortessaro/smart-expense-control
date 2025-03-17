@@ -1,4 +1,5 @@
 using FluentValidation;
+using SmartExpenseControl.Application.Users.Commands;
 using SmartExpenseControl.Domain.Repositories;
 
 namespace SmartExpenseControl.Application.Commands.CreateUser;

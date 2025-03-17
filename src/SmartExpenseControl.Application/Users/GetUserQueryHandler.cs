@@ -1,8 +1,9 @@
 using MediatR;
+using SmartExpenseControl.Application.Users.Queries;
 using SmartExpenseControl.Domain.Entities;
 using SmartExpenseControl.Domain.Repositories;
 
-namespace SmartExpenseControl.Application.Queries.GetUser;
+namespace SmartExpenseControl.Application.Users;
 
 public class GetUserQueryHandler(IUserRepository userRepository) : IRequestHandler<GetUserQuery, User?>
 {

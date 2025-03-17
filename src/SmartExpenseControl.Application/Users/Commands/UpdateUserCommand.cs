@@ -2,6 +2,6 @@ using MediatR;
 using SmartExpenseControl.Domain.Entities;
 using SmartExpenseControl.Domain.Notification;
 
-namespace SmartExpenseControl.Application.Commands.UpdateUser;
+namespace SmartExpenseControl.Application.Users.Commands;
 
 public record UpdateUserCommand(int Id, string Email, string Username, int RoleId) : IRequest<Message<User>>;

@@ -1,5 +1,6 @@
 using Microsoft.Extensions.DependencyInjection;
 using SmartExpenseControl.Application.Expenses;
+using SmartExpenseControl.Application.Expenses.Profiles;
 
 namespace SmartExpenseControl.Infrastructure.CrossCutting;
 

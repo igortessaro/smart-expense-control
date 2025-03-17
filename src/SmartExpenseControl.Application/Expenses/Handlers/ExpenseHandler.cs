@@ -8,7 +8,7 @@ using SmartExpenseControl.Domain.Notification;
 using SmartExpenseControl.Domain.Repositories;
 using SmartExpenseControl.Domain.Services;
 
-namespace SmartExpenseControl.Application.Expenses;
+namespace SmartExpenseControl.Application.Expenses.Handlers;
 
 public class ExpenseHandler(
     IExpenseRepository repository,

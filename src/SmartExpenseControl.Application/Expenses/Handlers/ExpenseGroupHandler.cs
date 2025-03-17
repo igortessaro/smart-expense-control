@@ -8,7 +8,7 @@ using SmartExpenseControl.Domain.Entities;
 using SmartExpenseControl.Domain.Notification;
 using SmartExpenseControl.Domain.Repositories;
 
-namespace SmartExpenseControl.Application.Expenses;
+namespace SmartExpenseControl.Application.Expenses.Handlers;
 
 public sealed class ExpenseGroupHandler(IMapper mapper, IExpenseGroupRepository repository) :
     IRequestHandler<GetSingleExpenseGroupQuery, ExpenseGroupSummary>,

@@ -1,9 +1,10 @@
 using MediatR;
+using SmartExpenseControl.Application.Users.Commands;
 using SmartExpenseControl.Domain.Entities;
 using SmartExpenseControl.Domain.Notification;
 using SmartExpenseControl.Domain.Repositories;
 
-namespace SmartExpenseControl.Application.Commands.CreateUser;
+namespace SmartExpenseControl.Application.Users;
 
 public sealed class CreateUserHandler(IUserRepository userRepository) : IRequestHandler<CreateUserCommand, Message<User>>
 {

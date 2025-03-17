@@ -1,10 +1,9 @@
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using SmartExpenseControl.Application.Commands.CreateUser;
-using SmartExpenseControl.Application.Commands.UpdateUser;
 using SmartExpenseControl.Application.Expenses.Queries;
-using SmartExpenseControl.Application.Queries.GetRoles;
-using SmartExpenseControl.Application.Queries.GetUser;
+using SmartExpenseControl.Application.Users.Commands;
+using SmartExpenseControl.Application.Users.Queries;
 
 namespace SmartExpenseControl.Api.Controllers;
 
