@@ -13,7 +13,7 @@ public sealed class UserProfile : Profile
             .ForMember(dest => dest.RoleName, opt => opt.MapFrom(src => src.Role.Name))
             .ReverseMap()
             .ForMember(dest => dest.Role, opt => opt.Ignore());
-        CreateMap<CreateUserCommand, User>().ReverseMap();
+        CreateMap<CreateUserCommand, User>().ConstructUsing(dest => new User(dest.Username, dest.Email, dest.Password, dest.RoleId));
         CreateMap<UpdatePasswordCommand, User>().ReverseMap();
         CreateMap<UpdateUserCommand, User>().ReverseMap();
     }

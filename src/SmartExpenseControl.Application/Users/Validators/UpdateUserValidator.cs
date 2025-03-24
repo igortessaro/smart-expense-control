@@ -8,6 +8,9 @@ public sealed class UpdateUserValidator : AbstractValidator<UpdateUserCommand>
 {
     public UpdateUserValidator(IUserRepository userRepository, IUserRoleRepository userRoleRepository)
     {
+        RuleFor(x => x.Id)
+            .MustAsync(async (id, _) => await userRepository.ExistsAsync(id))
+            .WithMessage("User doesn't exist");
         RuleFor(x => x.Email).EmailAddress();
         RuleFor(x => new { x.Email, x.Id })
             .MustAsync(async (user, _) => !await userRepository.ExistsAsync(user.Email, string.Empty, user.Id))

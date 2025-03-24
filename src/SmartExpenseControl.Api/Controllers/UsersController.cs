@@ -34,10 +34,10 @@ public sealed class UsersController(IMediator mediator) : ControllerBase
     }
 
     [HttpPut("{id:int}")]
-    public async Task<IActionResult> PutAsync([FromRoute] int id, [FromBody] UpdateUserCommand command) => Ok(await mediator.Send(command));
+    public async Task<IActionResult> PutAsync([FromRoute] int id, [FromBody] UpdateUserCommand command) => Ok(await mediator.Send(command with { Id = id }));
 
     [HttpPatch("{id:int}/password")]
-    public async Task<IActionResult> PatchAsync([FromRoute] int id, [FromBody] UpdatePasswordCommand command) => Ok(await mediator.Send(command));
+    public async Task<IActionResult> PatchAsync([FromRoute] int id, [FromBody] UpdatePasswordCommand command) => Ok(await mediator.Send(command with { Id = id }));
 
     [HttpDelete("{id:int}")]
     public async Task<IActionResult> DeleteAsync([FromRoute] int id) => Ok(await mediator.Send(new DeleteUserCommand(id)));
