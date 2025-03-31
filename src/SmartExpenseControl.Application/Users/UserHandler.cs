@@ -14,7 +14,8 @@ public sealed class UserHandler(IUserRepository userRepository, IUserRoleReposit
     IRequestHandler<GetSingleUserQuery, Message<UserSummary>>,
     IRequestHandler<GetAllRolesQuery, Message<IList<UserRole>>>,
     IRequestHandler<UpdateUserCommand, Message<UserSummary>>,
-    IRequestHandler<DeleteUserCommand, Message>
+    IRequestHandler<DeleteUserCommand, Message>,
+    IRequestHandler<UpdatePasswordCommand, Message<UserSummary>>
 {
     public async Task<Message<IList<UserRole>>> Handle(GetAllRolesQuery request, CancellationToken cancellationToken) =>
         Message<IList<UserRole>>.Ok(await userRoleRepository.GetAllAsync());
@@ -24,7 +25,8 @@ public sealed class UserHandler(IUserRepository userRepository, IUserRoleReposit
 
     public async Task<Message<UserSummary>> Handle(CreateUserCommand request, CancellationToken cancellationToken)
     {
-        var user = await userRepository.AddAsync(mapper.Map<User>(request));
+        var userToAdd = mapper.Map<User>(request);
+        var user = await userRepository.AddAsync(userToAdd);
         return mapper.Map<UserSummary>(user);
     }
 
@@ -41,9 +43,10 @@ public sealed class UserHandler(IUserRepository userRepository, IUserRoleReposit
         return Message.Ok();
     }
 
-    private string HashPassword(string password)
+    public async Task<Message<UserSummary>> Handle(UpdatePasswordCommand request, CancellationToken cancellationToken)
     {
-        // Implement password hashing logic here
-        return password; // Placeholder
+        var entity = await userRepository.GetAsync(request.Id);
+        _ = entity!.UpdatePassword(request.NewPassword);
+        return mapper.Map<UserSummary>(entity);
     }
 }
