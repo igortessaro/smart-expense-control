@@ -97,20 +97,18 @@ We'll use Docker Compose to set up the MySQL database. The Docker Compose file i
 4. Implement the backend services in C# using the proposed project structure.
 5. Run the backend services.
 
-### Database
+## TODO LIST
 
-We'll use MySQL for the database. The database scripts are located in the `database/scripts/` folder.
-
-### Docker Compose
-
-We'll use Docker Compose to set up the MySQL database. The Docker Compose file is located at the root of the project.
-
-### Steps to Run the Backend
-
-1. Clone the repository.
-2. Navigate to the project directory.
-3. Run `docker-compose up` to start the MySQL database.
-4. Implement the backend services in C# using the proposed project structure.
-5. Run the backend services.
-
-Would you like to proceed with the implementation of the backend services in C#?
+- [x] Implement expense tracking
+- [ ] Implement user authentication
+- [ ] Implement budget management
+- [ ] Implement reporting and analytics
+- [ ] Implement notifications and reminders
+- [ ] Implement managing different expense categories
+- [ ] Implement user roles and groups
+- [ ] Implement frontend application
+- [ ] Implement create expense installments
+- [ ] Implement recurring expenses
+- [ ] Implement hash on user password
+- [ ] Write unit tests for backend services
+- [ ] Write integration tests for backend services
