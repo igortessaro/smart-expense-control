@@ -75,9 +75,9 @@ smart-expense-control/
 │ ├── SmartExpenseControl.Domain.Tests/
 │ └── SmartExpenseControl.Infrastructure.Tests/
 └── database/
-    └── scripts/
-        ├── 001_create_tables.sql
-        └── 010_insert_user_roles.sql
+    ├── scripts/
+    │   ├── 001_create_tables.sql
+    │   └── 010_insert_user_roles.sql
     └── docker-compose.yml
 ```
 
