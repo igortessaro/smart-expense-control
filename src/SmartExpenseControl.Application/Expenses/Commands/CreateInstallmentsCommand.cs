@@ -4,16 +4,15 @@ using SmartExpenseControl.Domain.Notification;
 
 namespace SmartExpenseControl.Application.Expenses.Commands;
 
-public record CreateExpenseCommand() : IRequest<Message<ExpenseSummary>>
+public record CreateInstallmentsCommand() : IRequest<Message<IReadOnlyList<ExpenseSummary>>>
 {
-    public int ExpenseGroupId { get; init; }
+    public int Quantity { get; init; }
+    public decimal Amount { get; init; }
+    public string FirstPeriod { get; init; } = string.Empty;
+    public string PaymentMethod { get; init; } = string.Empty;
     public string Name { get; init; } = string.Empty;
     public string Tag { get; init; } = string.Empty;
-    public string Period { get; set; } = string.Empty;
-    public string PaymentMethod { get; init; } = string.Empty;
-    public decimal? Amount { get; init; }
     public int CreatedBy { get; init; }
     public int? PayedBy { get; init; }
-    public DateTime? PayedAt { get; init; }
-    public int? DueDay { get; set; }
+    public int DueDay { get; set; }
 }

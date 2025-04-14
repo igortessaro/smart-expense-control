@@ -16,6 +16,13 @@ public class ExpensesController(IMediator mediator) : ControllerBase
         return CreatedAtAction(nameof(GetAsync), new { id = response.Payload?.Id }, response);
     }
 
+    [HttpPost("installments")]
+    public async Task<IActionResult> CreateInstallmentsAsync(CreateInstallmentsCommand command)
+    {
+        var response = await mediator.Send(command);
+        return Ok(response);
+    }
+
     [HttpGet("{id:int}")]
     [ActionName(nameof(GetAsync))]
     public async Task<IActionResult> GetAsync([FromRoute] int id) => Ok(await mediator.Send(new GetSingleExpenseQuery(id)));

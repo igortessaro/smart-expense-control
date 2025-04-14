@@ -23,9 +23,7 @@ public sealed class Expense
     public string Name { get; private set; } = string.Empty;
     public string Tag { get; private set; } = string.Empty;
     public string Period { get; private set; } = string.Empty;
-
     public decimal? Amount { get; private set; }
-
     // cash, credit cards, debit cards, bank transfers, mobile wallets, and digital payments
     public string PaymentMethod { get; private set; } = string.Empty;
     public int CreatedBy { get; private set; }
@@ -34,6 +32,7 @@ public sealed class Expense
     public DateTime? UpdatedAt { get; private set; }
     public int? PayedBy { get; private set; }
     public DateTime? PayedAt { get; private set; }
+    public int? DueDay { get; private set; }
 
     public ExpenseGroup? ExpenseGroup { get; private set; }
 

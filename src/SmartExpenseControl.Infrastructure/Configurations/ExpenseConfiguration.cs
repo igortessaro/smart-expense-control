@@ -23,6 +23,7 @@ public sealed class ExpenseConfiguration : IEntityTypeConfiguration<Expense>
         builder.Property(x => x.UpdatedAt).HasColumnName("updated_at");
         builder.Property(x => x.PayedBy).HasColumnName("payed_by");
         builder.Property(x => x.PayedAt).HasColumnName("payed_at");
+        builder.Property(x => x.DueDay).HasColumnName("due_day");
 
         builder.HasOne(x => x.ExpenseGroup)
             .WithMany(x => x.Expenses)
