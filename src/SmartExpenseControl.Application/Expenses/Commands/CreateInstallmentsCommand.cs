@@ -14,5 +14,6 @@ public record CreateInstallmentsCommand() : IRequest<Message<IReadOnlyList<Expen
     public string Tag { get; init; } = string.Empty;
     public int CreatedBy { get; init; }
     public int? PayedBy { get; init; }
-    public int DueDay { get; set; }
+    public int DueDay { get; init; }
+    public int ExpenseGroupId { get; init; }
 }

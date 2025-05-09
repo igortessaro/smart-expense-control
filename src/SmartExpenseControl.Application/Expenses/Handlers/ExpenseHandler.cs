@@ -10,7 +10,7 @@ using SmartExpenseControl.Domain.Services;
 
 namespace SmartExpenseControl.Application.Expenses.Handlers;
 
-public class ExpenseHandler(
+public sealed class ExpenseHandler(
     IExpenseRepository repository,
     IExpenseGroupService service,
     IMapper mapper) :
