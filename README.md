@@ -93,7 +93,7 @@ We'll use Docker Compose to set up the MySQL database. The Docker Compose file i
 
 1. Clone the repository.
 2. Navigate to the project directory.
-3. Run `docker-compose up` to start the MySQL database.
+3. Run `docker compose -f ./database/docker-compose.yml  -p "smart-expense-control" up --build -d` to start the MySQL database.
 4. Implement the backend services in C# using the proposed project structure.
 5. Run the backend services.
 
