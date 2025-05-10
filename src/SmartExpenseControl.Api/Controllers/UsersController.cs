@@ -10,13 +10,13 @@ namespace SmartExpenseControl.Api.Controllers;
 [Route("api/[controller]")]
 public sealed class UsersController(IMediator mediator) : ControllerBase
 {
-    [HttpGet("{id:int}/expenses/{period}")]
+    [HttpGet("{id:int}/expenses")]
     public async Task<IActionResult> GetExpensesAsync(
         [FromRoute] int id,
-        [FromRoute] string period,
+        [FromQuery] int? periodExpenseId,
         [FromQuery] int? pageNumber,
         [FromQuery] int? pageSize) =>
-        Ok(await mediator.Send(new GetExpensesQuery(id, period, pageNumber ?? 1, pageSize ?? 10)));
+        Ok(await mediator.Send(new GetExpensesQuery(id, periodExpenseId, pageNumber ?? 1, pageSize ?? 10)));
 
     [HttpGet("{id:int}")]
     [ActionName(nameof(GetAsync))]

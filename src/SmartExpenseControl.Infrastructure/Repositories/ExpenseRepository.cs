@@ -10,12 +10,11 @@ namespace SmartExpenseControl.Infrastructure.Repositories;
 
 public sealed class ExpenseRepository(ApplicationDbContext context, IMapper mapper) : BaseRepository<Expense>(context), IExpenseRepository
 {
-    public async Task<PagedResponseOffset<ExpenseSummary>> GetPagedAsync(PagedRequest pagedRequest, int? userId, string period, int? expenseGroupId)
+    public async Task<PagedResponseOffset<ExpenseSummary>> GetPagedAsync(PagedRequest pagedRequest, int? userId, int? periodExpenseId)
     {
         var query = Query();
         if (userId.HasValue) query = query.Where(x => x.CreatedBy == userId);
-        if (!string.IsNullOrEmpty(period)) query = query.Where(x => x.Period == period);
-        if (expenseGroupId.HasValue) query = query.Where(x => x.ExpenseGroupId == expenseGroupId);
+        if (periodExpenseId.HasValue) query = query.Where(x => x.PeriodExpenseId == periodExpenseId);
         int totalRecords = await query.CountAsync();
         var data = await query
             .Include(x => x.ExpenseGroup)

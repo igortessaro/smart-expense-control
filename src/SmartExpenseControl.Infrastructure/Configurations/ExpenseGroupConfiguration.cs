@@ -20,6 +20,6 @@ public sealed class ExpenseGroupConfiguration : IEntityTypeConfiguration<Expense
 
         builder.HasMany(x => x.Expenses)
             .WithOne(x => x.ExpenseGroup)
-            .HasForeignKey(x => x.ExpenseGroupId);
+            .HasForeignKey(x => x.PeriodExpenseId);
     }
 }

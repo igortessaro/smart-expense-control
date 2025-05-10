@@ -36,20 +36,20 @@ public sealed class ExpenseHandler(
     public async Task<Message<ExpenseSummary>> Handle(UpdateExpenseCommand request, CancellationToken cancellationToken)
     {
         var expense = await repository.GetAsync(request.Id);
-        _ = expense?.Updated(request.Name, request.Tag, request.Period, request.Amount, request.PaymentMethod, request.UpdatedBy);
+        _ = expense?.Updated(request.Name, request.Tag, request.Amount, request.PaymentMethodId, request.UpdatedBy);
         if (request.PayedBy.HasValue) expense?.Pay(request.PayedBy, request.PayedAt);
         var result = mapper.Map<ExpenseSummary>(await repository.UpdateAsync(expense!));
         return result;
     }
 
     public Task<PagedResponseOffset<ExpenseSummary>> Handle(GetExpensesQuery request, CancellationToken cancellationToken) =>
-        repository.GetPagedAsync(new PagedRequest(request.PageNumber, request.PageSize), request.UserId, request.Period, null);
+        repository.GetPagedAsync(new PagedRequest(request.PageNumber, request.PageSize), request.UserId, request.PeriodExpenseId);
 
     public async Task<ExpenseSummary> Handle(GetSingleExpenseQuery request, CancellationToken cancellationToken) =>
         mapper.Map<ExpenseSummary>(await repository.GetAsync(request.Id));
 
     public Task<PagedResponseOffset<ExpenseSummary>> Handle(GetExpensesByGroupQuery request, CancellationToken cancellationToken) =>
-        repository.GetPagedAsync(new PagedRequest(request.PageNumber, request.PageSize), null, request.Period, request.Id);
+        repository.GetPagedAsync(new PagedRequest(request.PageNumber, request.PageSize), null, request.PeriodExpenseId);
 
     public async Task<Message> Handle(DeleteExpenseCommand request, CancellationToken cancellationToken)
     {
