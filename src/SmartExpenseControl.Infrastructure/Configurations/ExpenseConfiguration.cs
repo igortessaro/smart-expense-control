@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using SmartExpenseControl.Domain.Entities;
+using SmartExpenseControl.Domain.ExpenseGroups;
 
 namespace SmartExpenseControl.Infrastructure.Configurations;
 
@@ -8,25 +8,80 @@ public sealed class ExpenseConfiguration : IEntityTypeConfiguration<Expense>
 {
     public void Configure(EntityTypeBuilder<Expense> builder)
     {
-        builder.ToTable("Expenses");
-        builder.HasKey(x => x.Id).HasName("id");
-        builder.Property(x => x.Id).ValueGeneratedOnAdd();
-        builder.Property(x => x.PeriodExpenseId).HasColumnName("period_expenses_id").IsRequired();
-        builder.Property(x => x.Name).HasColumnName("name").HasMaxLength(255).IsRequired();
-        builder.Property(x => x.Tag).HasColumnName("tag").HasMaxLength(100);
-        builder.Property(x => x.Amount).HasColumnName("amount");
-        builder.Property(x => x.PaymentMethodId).HasColumnName("payment_method_id").HasMaxLength(100);
-        builder.Property(x => x.CreatedBy).HasColumnName("created_by").IsRequired();
-        builder.Property(x => x.CreatedAt).HasColumnName("created_at").IsRequired();
-        builder.Property(x => x.UpdatedBy).HasColumnName("updated_by");
-        builder.Property(x => x.UpdatedAt).HasColumnName("updated_at");
-        builder.Property(x => x.PaidBy).HasColumnName("payed_by");
-        builder.Property(x => x.PaidAt).HasColumnName("payed_at");
-        builder.Property(x => x.DueDay).HasColumnName("due_day");
-        builder.Property(x => x.ExpenseCategoryId).HasColumnName("expense_category_id").IsRequired();
+        builder.ToTable("expenses");
+        builder.HasKey(x => x.Id);
 
-        builder.HasOne(x => x.ExpenseGroup)
+        builder.Property(x => x.Id)
+            .HasColumnName("id")
+            .ValueGeneratedOnAdd();
+
+        builder.Property(x => x.ExpensePeriodId)
+            .HasColumnName("expense_period_id")
+            .IsRequired();
+
+        builder.Property(x => x.Name)
+            .HasColumnName("name")
+            .HasMaxLength(255)
+            .IsRequired();
+
+        builder.Property(x => x.Amount)
+            .HasColumnName("amount");
+
+        builder.Property(x => x.PaymentMethod)
+            .HasColumnName("payment_method")
+            .HasConversion(
+                v => v == null ? null : v.Name,
+                v => v == null ? null : PaymentMethod.FromName(v)
+            )
+            .HasMaxLength(30);
+
+        builder.Property(x => x.DueDate)
+            .HasColumnName("due_date");
+
+        builder.Property(x => x.CreatedAt)
+            .HasColumnName("created_at")
+            .IsRequired();
+
+        builder.Property(x => x.CreatedBy)
+            .HasColumnName("created_by")
+            .IsRequired();
+
+        builder.Property(x => x.UpdatedBy)
+            .HasColumnName("updated_by");
+
+        builder.Property(x => x.UpdatedAt)
+            .HasColumnName("updated_at");
+
+        builder.Property(x => x.PaidBy)
+            .HasColumnName("paid_by");
+
+        builder.Property(x => x.PaidAt)
+            .HasColumnName("paid_at");
+
+        builder.Property(x => x.ExpenseTypeId)
+            .HasColumnName("expense_type_id");
+
+        builder.HasIndex(x => x.ExpensePeriodId)
+            .HasDatabaseName("idx_expenses_expense_period_id");
+
+        builder.HasIndex(x => x.CreatedBy)
+            .HasDatabaseName("idx_expenses_created_by");
+
+        builder.HasIndex(x => x.UpdatedBy)
+            .HasDatabaseName("idx_expenses_updated_by");
+
+        builder.HasIndex(x => x.PaidBy)
+            .HasDatabaseName("idx_expenses_paid_by");
+
+        builder.HasIndex(x => x.ExpenseTypeId)
+            .HasDatabaseName("idx_expenses_expense_type_id");
+
+        builder.HasOne(x => x.ExpensePeriod)
             .WithMany(x => x.Expenses)
-            .HasForeignKey(x => x.PeriodExpenseId);
+            .HasForeignKey(x => x.ExpensePeriodId);
+
+        builder.HasOne(x => x.ExpenseType)
+            .WithMany()
+            .HasForeignKey(x => x.ExpenseTypeId);
     }
 }
