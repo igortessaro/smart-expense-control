@@ -1,5 +1,5 @@
 -- Insert sample data into UserRoles
-INSERT INTO `UserRoles` (`name`, `description`) VALUES
+INSERT INTO `user_roles` (`name`, `description`) VALUES
 ('Master User', 'Full access to all features'),
 ('Standard User', 'Access to personal expense tracking and budget management'),
 ('Viewer', 'Read-only access to expenses and budgets'),
@@ -12,7 +12,7 @@ INSERT INTO `UserRoles` (`name`, `description`) VALUES
 ('Tester', 'Access for testing purposes');
 
 -- Insert sample data into Users
-INSERT INTO `Users` (`username`, `email`, `password_hash`, `role_id`, `created_at`, `updated_at`) VALUES
+INSERT INTO `users` (`username`, `email`, `password_hash`, `role_id`, `created_at`, `updated_at`) VALUES
 ('admin', 'admin@email.com', 'hashed_password_1', 1, NOW(), NOW()),
 ('user1', 'user1@email.com', 'hashed_password_2', 2, NOW(), NOW()),
 ('user2', 'user2@email.com', 'hashed_password_3', 2, NOW(), NOW()),
