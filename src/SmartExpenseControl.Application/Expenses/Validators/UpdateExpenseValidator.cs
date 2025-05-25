@@ -9,7 +9,6 @@ public sealed class UpdateExpenseValidator : AbstractValidator<UpdateExpenseComm
     public UpdateExpenseValidator(IExpenseRepository repository)
     {
         RuleFor(x => x.Name).MaximumLength(255).NotEmpty();
-        RuleFor(x => x.Tag).MaximumLength(100);
         RuleFor(x => x.PayedAt).NotNull().When(x => x.PayedBy.HasValue);
         RuleFor(x => x.Id)
             .MustAsync(async (id, _) => await repository.ExistsAsync(id))

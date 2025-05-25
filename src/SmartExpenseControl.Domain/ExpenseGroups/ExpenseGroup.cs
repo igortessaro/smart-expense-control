@@ -13,7 +13,7 @@ public sealed class ExpenseGroup
     public IReadOnlyList<ExpenseType> ExpenseTypes { get; private set; } = [];
     public IReadOnlyList<ExpensePeriod> ExpensePeriods { get; private set; } = [];
     public IReadOnlyList<ExpenseGroupsUsers> Users { get; private set; } = [];
-    public IReadOnlyList<ExpenseApportionment> Apportionments { get; private set; } = [];
+    public IReadOnlyList<ExpenseApportionment> ExpensesApportionment { get; private set; } = [];
 
     private ExpenseGroup() { }
 
@@ -24,5 +24,19 @@ public sealed class ExpenseGroup
         Periodicity = periodicity;
         CreatedBy = createdBy;
         CreatedAt = DateTime.UtcNow;
+    }
+
+    public static ExpenseGroup CreateDefault(int createdBy)
+    {
+        return new ExpenseGroup("Default Expense Group", "Default Expense Group created automatically", Periodicity.OneTime, createdBy);
+    }
+
+    public ExpenseGroup Update(string name, string description, int updatedBy)
+    {
+        if (!string.IsNullOrEmpty(name)) Name = name;
+        if (!string.IsNullOrEmpty(description)) Description = description;
+        UpdatedBy = updatedBy;
+        UpdatedAt = DateTime.UtcNow;
+        return this;
     }
 }

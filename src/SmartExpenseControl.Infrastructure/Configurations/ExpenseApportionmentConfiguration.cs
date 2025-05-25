@@ -38,7 +38,7 @@ public sealed class ExpenseApportionmentConfiguration : IEntityTypeConfiguration
             .HasDatabaseName("idx_expense_apportionments_user_id");
 
         builder.HasOne(x => x.ExpenseGroup)
-            .WithMany(x => x.Apportionments)
+            .WithMany(x => x.ExpensesApportionment)
             .HasForeignKey(x => x.ExpenseGroupId);
     }
 }

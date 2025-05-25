@@ -2,7 +2,7 @@ using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using Microsoft.EntityFrameworkCore;
 using SmartExpenseControl.Domain.DataObjectTransfer;
-using SmartExpenseControl.Domain.Entities;
+using SmartExpenseControl.Domain.ExpenseGroups;
 using SmartExpenseControl.Domain.Repositories;
 using SmartExpenseControl.Infrastructure.Data;
 
@@ -14,10 +14,10 @@ public sealed class ExpenseRepository(ApplicationDbContext context, IMapper mapp
     {
         var query = Query();
         if (userId.HasValue) query = query.Where(x => x.CreatedBy == userId);
-        if (periodExpenseId.HasValue) query = query.Where(x => x.PeriodExpenseId == periodExpenseId);
+        if (periodExpenseId.HasValue) query = query.Where(x => x.ExpensePeriodId == periodExpenseId);
         int totalRecords = await query.CountAsync();
         var data = await query
-            .Include(x => x.ExpenseGroup)
+            .Include(x => x.ExpensePeriod)
             .OrderBy(x => x.Id)
             .Skip((pagedRequest.PageNumber - 1) * pagedRequest.PageSize)
             .Take(pagedRequest.PageSize)

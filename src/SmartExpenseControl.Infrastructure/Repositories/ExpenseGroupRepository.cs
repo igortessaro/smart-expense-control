@@ -2,7 +2,7 @@ using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using Microsoft.EntityFrameworkCore;
 using SmartExpenseControl.Domain.DataObjectTransfer;
-using SmartExpenseControl.Domain.Entities;
+using SmartExpenseControl.Domain.ExpenseGroups;
 using SmartExpenseControl.Domain.Repositories;
 using SmartExpenseControl.Infrastructure.Data;
 

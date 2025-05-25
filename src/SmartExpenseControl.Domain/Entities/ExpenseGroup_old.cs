@@ -2,11 +2,11 @@ using SmartExpenseControl.Domain.Users;
 
 namespace SmartExpenseControl.Domain.Entities;
 
-public sealed class ExpenseGroup
+public sealed class ExpenseGroup_old
 {
-    private ExpenseGroup() { }
+    private ExpenseGroup_old() { }
 
-    public ExpenseGroup(string name, string description, int createdBy) : this()
+    public ExpenseGroup_old(string name, string description, int createdBy) : this()
     {
         Name = name;
         Description = description;
@@ -23,16 +23,16 @@ public sealed class ExpenseGroup
     public DateTime? UpdatedAt { get; private set; }
     public int OwnerId { get; private set; }
 
-    public IReadOnlyList<Expense> Expenses { get; private set; } = [];
-    public IReadOnlyList<ExpenseGroupUser> ExpenseGroupUsers { get; private set; } = [];
+    public IReadOnlyList<Expense_old> Expenses { get; private set; } = [];
+    // public IReadOnlyList<ExpenseGroupUser> ExpenseGroupUsers { get; private set; } = [];
     public User Owner { get; private set; } = null!;
 
-    public static ExpenseGroup CreateDefault(int createdBy)
+    public static ExpenseGroup_old CreateDefault(int createdBy)
     {
-        return new ExpenseGroup("Default Expense Group", "Default Expense Group created automatically", createdBy);
+        return new ExpenseGroup_old("Default Expense Group", "Default Expense Group created automatically", createdBy);
     }
 
-    public ExpenseGroup Update(string name, string description, int updatedBy)
+    public ExpenseGroup_old Update(string name, string description, int updatedBy)
     {
         if (!string.IsNullOrEmpty(name)) Name = name;
         if (!string.IsNullOrEmpty(description)) Description = description;

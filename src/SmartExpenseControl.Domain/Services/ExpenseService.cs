@@ -1,4 +1,4 @@
-using SmartExpenseControl.Domain.Entities;
+using SmartExpenseControl.Domain.ExpenseGroups;
 using SmartExpenseControl.Domain.Repositories;
 
 namespace SmartExpenseControl.Domain.Services;

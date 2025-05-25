@@ -1,4 +1,4 @@
-using SmartExpenseControl.Domain.Entities;
+using SmartExpenseControl.Domain.ExpenseGroups;
 
 namespace SmartExpenseControl.Domain.Specifications;
 

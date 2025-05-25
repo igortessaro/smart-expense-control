@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
-using SmartExpenseControl.Domain.Entities;
+using SmartExpenseControl.Domain.ExpenseGroups;
+using SmartExpenseControl.Domain.Settlements;
+using SmartExpenseControl.Domain.Transactions;
 using SmartExpenseControl.Domain.Users;
 using SmartExpenseControl.Infrastructure.Configurations;
 
@@ -8,18 +10,32 @@ namespace SmartExpenseControl.Infrastructure.Data;
 public sealed class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
     : DbContext(options)
 {
-    public DbSet<UserRole> UserRoles { get; set; }
-    public DbSet<User> Users { get; set; }
+    public DbSet<ExpenseApportionment> ExpensesApportionment { get; set; }
     public DbSet<Expense> Expenses { get; set; }
     public DbSet<ExpenseGroup> ExpenseGroups { get; set; }
+    public DbSet<ExpenseGroupsUsers> ExpenseGroupsUsers { get; set; }
+    public DbSet<ExpensePeriod> ExpensePeriods { get; set; }
+    public DbSet<ExpensePeriodSettlement> ExpensePeriodSettlements { get; set; }
+    public DbSet<ExpenseSettlement> ExpenseSettlements { get; set; }
+    public DbSet<ExpenseType> ExpenseTypes { get; set; }
+    public DbSet<FinancialTransaction> FinancialTransactions { get; set; }
+    public DbSet<User> Users { get; set; }
+    public DbSet<UserRole> UserRoles { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
-        modelBuilder.ApplyConfiguration(new UserRoleConfiguration());
-        modelBuilder.ApplyConfiguration(new UserConfiguration());
+        modelBuilder.ApplyConfiguration(new ExpenseApportionmentConfiguration());
         modelBuilder.ApplyConfiguration(new ExpenseConfiguration());
         modelBuilder.ApplyConfiguration(new ExpenseGroupConfiguration());
+        modelBuilder.ApplyConfiguration(new ExpenseGroupsUsersConfiguration());
+        modelBuilder.ApplyConfiguration(new ExpensePeriodConfiguration());
+        modelBuilder.ApplyConfiguration(new ExpensePeriodSettlementConfiguration());
+        modelBuilder.ApplyConfiguration(new ExpenseSettlementConfiguration());
+        modelBuilder.ApplyConfiguration(new ExpenseTypeConfiguration());
+        modelBuilder.ApplyConfiguration(new FinancialTransactionConfiguration());
+        modelBuilder.ApplyConfiguration(new UserConfiguration());
+        modelBuilder.ApplyConfiguration(new UserRoleConfiguration());
     }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

@@ -1,10 +1,10 @@
 namespace SmartExpenseControl.Domain.Entities;
 
-public sealed class Expense
+public sealed class Expense_old
 {
-    private Expense() { }
+    private Expense_old() { }
 
-    public Expense(int periodExpenseId, string name, string tag, decimal? amount, int? paymentMethodId,
+    public Expense_old(int periodExpenseId, string name, string tag, decimal? amount, int? paymentMethodId,
         int createdBy)
         : this()
     {
@@ -32,18 +32,18 @@ public sealed class Expense
     public int? DueDay { get; private set; }
     public int? ExpenseCategoryId { get; private set; }
 
-    public PeriodExpense PeriodExpense { get; private set; } = null!;
-    public ExpenseGroup? ExpenseGroup { get; private set; }
-    public ExpenseCategory ExpenseCategory { get; private set; } = null!;
+    // public PeriodExpense PeriodExpense { get; private set; } = null!;
+    public ExpenseGroup_old? ExpenseGroup { get; private set; }
+    // public ExpenseCategory ExpenseCategory { get; private set; } = null!;
 
-    public Expense Pay(int? payedBy, DateTime? payedAt)
+    public Expense_old Pay(int? payedBy, DateTime? payedAt)
     {
         PaidAt = payedAt;
         PaidBy = payedBy;
         return this;
     }
 
-    public Expense Updated(string name, string tag, decimal? amount, int? paymentMethodId, int updatedBy)
+    public Expense_old Updated(string name, string tag, decimal? amount, int? paymentMethodId, int updatedBy)
     {
         if (!string.IsNullOrEmpty(name)) Name = name;
         if (!string.IsNullOrEmpty(tag)) Tag = tag;

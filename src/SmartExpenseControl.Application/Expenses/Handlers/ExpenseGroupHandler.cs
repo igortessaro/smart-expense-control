@@ -5,6 +5,7 @@ using SmartExpenseControl.Application.Expenses.Commands;
 using SmartExpenseControl.Application.Expenses.Queries;
 using SmartExpenseControl.Domain.DataObjectTransfer;
 using SmartExpenseControl.Domain.Entities;
+using SmartExpenseControl.Domain.ExpenseGroups;
 using SmartExpenseControl.Domain.Repositories;
 using SmartExpenseControl.Domain.Shared;
 using Notification = SmartExpenseControl.Domain.Shared.Notification;

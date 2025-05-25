@@ -38,4 +38,22 @@ public sealed class Expense
         CreatedAt = DateTime.UtcNow;
         ExpenseTypeId = expenseTypeId;
     }
+
+    public Expense Pay(int? payedBy, DateTime? payedAt)
+    {
+        PaidAt = payedAt;
+        PaidBy = payedBy;
+        return this;
+    }
+
+    public Expense Updated(string name, int? expenseTypeId, decimal? amount, string paymentMethod, int updatedBy)
+    {
+        if (!string.IsNullOrEmpty(name)) Name = name;
+        if (expenseTypeId.HasValue) ExpenseTypeId = expenseTypeId;
+        if (amount.HasValue) Amount = amount;
+        if (!string.IsNullOrEmpty(paymentMethod)) PaymentMethod = PaymentMethod.FromName(paymentMethod);
+        UpdatedBy = updatedBy;
+        UpdatedAt = DateTime.UtcNow;
+        return this;
+    }
 }
