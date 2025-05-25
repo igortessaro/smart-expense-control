@@ -1,4 +1,5 @@
 using SmartExpenseControl.Domain.DataObjectTransfer;
+using SmartExpenseControl.Domain.Shared;
 using SmartExpenseControl.Domain.Users;
 
 namespace SmartExpenseControl.Domain.Repositories;

@@ -1,4 +1,4 @@
-namespace SmartExpenseControl.Domain.Repositories;
+namespace SmartExpenseControl.Domain.Shared;
 
 public interface IRepository<T> where T : class
 {
