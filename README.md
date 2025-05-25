@@ -59,8 +59,6 @@ Smart Expense Control is an application designed to help users manage their expe
 
 ### Architecture
 
-We'll use Domain-Driven Design (DDD) for the backend architecture in C#. Here's a proposed project and folder structure:
-
 ```
 smart-expense-control/
 ├── src/
@@ -96,19 +94,3 @@ We'll use Docker Compose to set up the MySQL database. The Docker Compose file i
 3. Run `docker compose -f ./database/docker-compose.yml  -p "smart-expense-control" up --build -d` to start the MySQL database.
 4. Implement the backend services in C# using the proposed project structure.
 5. Run the backend services.
-
-## TODO LIST
-
-- [x] Implement expense tracking
-- [ ] Implement user authentication
-- [ ] Implement budget management
-- [ ] Implement reporting and analytics
-- [ ] Implement notifications and reminders
-- [ ] Implement managing different expense categories
-- [ ] Implement user roles and groups
-- [ ] Implement frontend application
-- [ ] Implement create expense installments
-- [ ] Implement recurring expenses
-- [ ] Implement hash on user password
-- [ ] Write unit tests for backend services
-- [ ] Write integration tests for backend services
