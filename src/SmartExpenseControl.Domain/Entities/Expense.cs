@@ -32,9 +32,9 @@ public sealed class Expense
     public int? DueDay { get; private set; }
     public int? ExpenseCategoryId { get; private set; }
 
-    public PeriodExpense PeriodExpense { get; set; }
+    public PeriodExpense PeriodExpense { get; private set; } = null!;
     public ExpenseGroup? ExpenseGroup { get; private set; }
-    public ExpenseCategory ExpenseCategory { get; set; }
+    public ExpenseCategory ExpenseCategory { get; private set; } = null!;
 
     public Expense Pay(int? payedBy, DateTime? payedAt)
     {

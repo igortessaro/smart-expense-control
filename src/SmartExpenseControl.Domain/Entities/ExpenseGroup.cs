@@ -1,3 +1,5 @@
+using SmartExpenseControl.Domain.Users;
+
 namespace SmartExpenseControl.Domain.Entities;
 
 public sealed class ExpenseGroup
@@ -19,10 +21,11 @@ public sealed class ExpenseGroup
     public DateTime CreatedAt { get; private set; }
     public int? UpdatedBy { get; private set; }
     public DateTime? UpdatedAt { get; private set; }
-
-    // TODO: Create a property to set the user owner and another property to set the users that can see this group
+    public int OwnerId { get; private set; }
 
     public IReadOnlyList<Expense> Expenses { get; private set; } = [];
+    public IReadOnlyList<ExpenseGroupUser> ExpenseGroupUsers { get; private set; } = [];
+    public User Owner { get; private set; } = null!;
 
     public static ExpenseGroup CreateDefault(int createdBy)
     {
