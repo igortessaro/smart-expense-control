@@ -14,7 +14,7 @@ public sealed class TransactionType
         Name = name;
     }
 
-    public static IReadOnlyList<TransactionType> ToList() => [Income, Expense ];
+    public static IReadOnlyList<TransactionType> ToList() => [Income, Expense];
 
     public static TransactionType FromName(string name) => ToList().FirstOrDefault(x => x.Name == name) ?? throw new ArgumentException($"Invalid TransactionType name: {name}");
 
