@@ -7,7 +7,6 @@ public sealed class FinancialTransaction
     public int CounterpartId { get; private set; }
     public decimal Amount { get; private set; }
     public TransactionType TransactionType { get; private set; } = null!;
-    //public string Description { get; private set; } = string.Empty;
     public DateTime CreatedAt { get; private set; }
     public TransactionStatus Status { get; private set; } = TransactionStatus.Pending;
     public int ExpenseSettlementId { get; private set; }
@@ -25,7 +24,6 @@ public sealed class FinancialTransaction
         CounterpartId = counterpartId;
         Amount = amount;
         TransactionType = transactionType;
-        //Description = description;
         Status = TransactionStatus.Pending;
         ExpenseSettlementId = expenseSettlementId;
         CreatedAt = DateTime.UtcNow;

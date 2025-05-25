@@ -157,7 +157,6 @@ CREATE TABLE `financial_transactions` (
     `counterparty_id` INT NOT NULL COMMENT 'Other party involved in the transaction',
     `amount` DECIMAL(18,2) NOT NULL COMMENT 'Transaction amount',
     `transaction_type` ENUM('income', 'expense') NOT NULL COMMENT 'Type of transaction',
-    `description` TEXT COMMENT 'Description or notes for the transaction',
     `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP COMMENT 'Creation timestamp',
     `status` ENUM('pending', 'completed', 'failed') DEFAULT 'pending' COMMENT 'Transaction status',
     `expense_settlement_id` INT NOT NULL COMMENT 'Foreign key to expense_settlement',

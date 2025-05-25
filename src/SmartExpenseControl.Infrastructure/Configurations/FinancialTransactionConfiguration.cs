@@ -15,7 +15,6 @@ public sealed class FinancialTransactionConfiguration : IEntityTypeConfiguration
         builder.Property(x => x.UserId).HasColumnName("user_id").IsRequired();
         builder.Property(x => x.CounterpartId).HasColumnName("counterparty_id").IsRequired();
         builder.Property(x => x.Amount).HasColumnName("amount").IsRequired();
-        // builder.Property(x => x.Description).HasColumnName("description");
         builder.Property(x => x.CreatedAt).HasColumnName("created_at").IsRequired();
         builder.Property(x => x.ExpenseSettlementId).HasColumnName("expense_settlement_id").IsRequired();
 
