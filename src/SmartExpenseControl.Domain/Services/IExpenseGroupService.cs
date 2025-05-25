@@ -1,9 +1,9 @@
 using SmartExpenseControl.Domain.Entities;
-using SmartExpenseControl.Domain.Notification;
+using SmartExpenseControl.Domain.Shared;
 
 namespace SmartExpenseControl.Domain.Services;
 
 public interface IExpenseGroupService
 {
-    Task<Message<ExpenseGroup>> GetOrCreateDefaultAsync(int expenseGroupId, int userId);
+    Task<Notification<ExpenseGroup>> GetOrCreateDefaultAsync(int expenseGroupId, int userId);
 }

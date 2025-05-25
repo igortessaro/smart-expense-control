@@ -1,10 +1,10 @@
 using MediatR;
 using SmartExpenseControl.Domain.DataObjectTransfer;
-using SmartExpenseControl.Domain.Notification;
+using SmartExpenseControl.Domain.Shared;
 
 namespace SmartExpenseControl.Application.Expenses.Commands;
 
-public record CreateInstallmentsCommand() : IRequest<Message<IReadOnlyList<ExpenseSummary>>>
+public record CreateInstallmentsCommand() : IRequest<Notification<IReadOnlyList<ExpenseSummary>>>
 {
     public int Quantity { get; init; }
     public decimal Amount { get; init; }

@@ -1,7 +1,7 @@
 using MediatR;
 using SmartExpenseControl.Domain.DataObjectTransfer;
-using SmartExpenseControl.Domain.Notification;
+using SmartExpenseControl.Domain.Shared;
 
 namespace SmartExpenseControl.Application.Users.Queries;
 
-public record GetSingleUserQuery(int Id) : IRequest<Message<UserSummary>>;
+public record GetSingleUserQuery(int Id) : IRequest<Notification<UserSummary>>;

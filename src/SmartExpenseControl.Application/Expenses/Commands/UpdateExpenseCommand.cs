@@ -1,10 +1,10 @@
 using MediatR;
 using SmartExpenseControl.Domain.DataObjectTransfer;
-using SmartExpenseControl.Domain.Notification;
+using SmartExpenseControl.Domain.Shared;
 
 namespace SmartExpenseControl.Application.Expenses.Commands;
 
-public record UpdateExpenseCommand() : IRequest<Message<ExpenseSummary>>
+public record UpdateExpenseCommand() : IRequest<Notification<ExpenseSummary>>
 {
     public int Id { get; init; }
     public string Name { get; init; } = string.Empty;

@@ -1,6 +1,6 @@
 using MediatR;
-using SmartExpenseControl.Domain.Notification;
+using SmartExpenseControl.Domain.Shared;
 
 namespace SmartExpenseControl.Application.Expenses.Commands;
 
-public record DeleteExpenseCommand(int Id) : IRequest<Message>;
+public record DeleteExpenseCommand(int Id) : IRequest<Notification>;

@@ -1,7 +1,7 @@
 using MediatR;
-using SmartExpenseControl.Domain.Notification;
+using SmartExpenseControl.Domain.Shared;
 using SmartExpenseControl.Domain.Users;
 
 namespace SmartExpenseControl.Application.Users.Queries;
 
-public record GetAllRolesQuery : IRequest<Message<IList<UserRole>>>;
+public record GetAllRolesQuery : IRequest<Notification<IList<UserRole>>>;

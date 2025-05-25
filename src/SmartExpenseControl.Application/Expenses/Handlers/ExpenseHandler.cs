@@ -4,9 +4,10 @@ using SmartExpenseControl.Application.Expenses.Commands;
 using SmartExpenseControl.Application.Expenses.Queries;
 using SmartExpenseControl.Domain.DataObjectTransfer;
 using SmartExpenseControl.Domain.Entities;
-using SmartExpenseControl.Domain.Notification;
 using SmartExpenseControl.Domain.Repositories;
 using SmartExpenseControl.Domain.Services;
+using SmartExpenseControl.Domain.Shared;
+using Notification = SmartExpenseControl.Domain.Shared.Notification;
 
 namespace SmartExpenseControl.Application.Expenses.Handlers;
 
@@ -14,14 +15,14 @@ public sealed class ExpenseHandler(
     IExpenseRepository repository,
     IExpenseGroupService service,
     IMapper mapper) :
-    IRequestHandler<CreateExpenseCommand, Message<ExpenseSummary>>,
-    IRequestHandler<UpdateExpenseCommand, Message<ExpenseSummary>>,
+    IRequestHandler<CreateExpenseCommand, Notification<ExpenseSummary>>,
+    IRequestHandler<UpdateExpenseCommand, Notification<ExpenseSummary>>,
     IRequestHandler<GetExpensesQuery, PagedResponseOffset<ExpenseSummary>>,
     IRequestHandler<GetSingleExpenseQuery, ExpenseSummary>,
     IRequestHandler<GetExpensesByGroupQuery, PagedResponseOffset<ExpenseSummary>>,
-    IRequestHandler<DeleteExpenseCommand, Message>
+    IRequestHandler<DeleteExpenseCommand, Notification>
 {
-    public async Task<Message<ExpenseSummary>> Handle(CreateExpenseCommand request, CancellationToken cancellationToken)
+    public async Task<Notification<ExpenseSummary>> Handle(CreateExpenseCommand request, CancellationToken cancellationToken)
     {
         var expenseGroupMessage = await service.GetOrCreateDefaultAsync(request.ExpenseGroupId, request.CreatedBy);
         if (!expenseGroupMessage.IsSuccess) return expenseGroupMessage.Notifications.ToArray();
@@ -33,7 +34,7 @@ public sealed class ExpenseHandler(
         return result;
     }
 
-    public async Task<Message<ExpenseSummary>> Handle(UpdateExpenseCommand request, CancellationToken cancellationToken)
+    public async Task<Notification<ExpenseSummary>> Handle(UpdateExpenseCommand request, CancellationToken cancellationToken)
     {
         var expense = await repository.GetAsync(request.Id);
         _ = expense?.Updated(request.Name, request.Tag, request.Amount, request.PaymentMethodId, request.UpdatedBy);
@@ -51,9 +52,9 @@ public sealed class ExpenseHandler(
     public Task<PagedResponseOffset<ExpenseSummary>> Handle(GetExpensesByGroupQuery request, CancellationToken cancellationToken) =>
         repository.GetPagedAsync(new PagedRequest(request.PageNumber, request.PageSize), null, request.PeriodExpenseId);
 
-    public async Task<Message> Handle(DeleteExpenseCommand request, CancellationToken cancellationToken)
+    public async Task<Notification> Handle(DeleteExpenseCommand request, CancellationToken cancellationToken)
     {
         await repository.DeleteAsync(request.Id);
-        return Message.Ok();
+        return Notification.Ok();
     }
 }

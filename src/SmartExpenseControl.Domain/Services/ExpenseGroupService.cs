@@ -1,12 +1,12 @@
 using SmartExpenseControl.Domain.Entities;
-using SmartExpenseControl.Domain.Notification;
 using SmartExpenseControl.Domain.Repositories;
+using SmartExpenseControl.Domain.Shared;
 
 namespace SmartExpenseControl.Domain.Services;
 
 public sealed class ExpenseGroupService(IExpenseGroupRepository expenseGroupRepository) : IExpenseGroupService
 {
-    public async Task<Message<ExpenseGroup>> GetOrCreateDefaultAsync(int expenseGroupId, int userId)
+    public async Task<Notification<ExpenseGroup>> GetOrCreateDefaultAsync(int expenseGroupId, int userId)
     {
         var expenseGroup = await expenseGroupRepository.GetByIdAsync(expenseGroupId);
         if (expenseGroup is not null) return expenseGroup;
