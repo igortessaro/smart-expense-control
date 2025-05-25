@@ -5,8 +5,8 @@ public sealed class TransactionType
     public static readonly TransactionType Income = new(1, "income");
     public static readonly TransactionType Expense = new(2, "expense");
 
-    public int Id { get; }
-    public string Name { get; }
+    public int Id { get; private set; }
+    public string Name { get; private set; }
 
     private TransactionType(int id, string name)
     {

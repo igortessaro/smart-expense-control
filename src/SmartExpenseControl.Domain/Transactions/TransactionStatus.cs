@@ -6,8 +6,8 @@ public sealed class TransactionStatus
     public static readonly TransactionStatus Completed = new(2, "completed");
     public static readonly TransactionStatus Failed = new(3, "failed");
 
-    public int Id { get; }
-    public string Name { get; }
+    public int Id { get; private set; }
+    public string Name { get; private set; }
 
     private TransactionStatus(int id, string name)
     {
