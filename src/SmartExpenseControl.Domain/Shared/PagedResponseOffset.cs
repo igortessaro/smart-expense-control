@@ -1,4 +1,4 @@
-namespace SmartExpenseControl.Domain.DataObjectTransfer;
+namespace SmartExpenseControl.Domain.Shared;
 
 public class PagedResponseOffset<T>(int? pageNumber, int pageSize, int totalRecords, List<T> data) where T : class
 {

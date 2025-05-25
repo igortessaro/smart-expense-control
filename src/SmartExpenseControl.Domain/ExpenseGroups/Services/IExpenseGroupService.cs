@@ -1,7 +1,6 @@
-using SmartExpenseControl.Domain.ExpenseGroups;
 using SmartExpenseControl.Domain.Shared;
 
-namespace SmartExpenseControl.Domain.Services;
+namespace SmartExpenseControl.Domain.ExpenseGroups.Services;
 
 public interface IExpenseGroupService
 {

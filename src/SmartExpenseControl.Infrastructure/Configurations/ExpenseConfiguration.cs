@@ -1,6 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using SmartExpenseControl.Domain.ExpenseGroups;
+using SmartExpenseControl.Domain.ExpenseGroups.Entities;
+using SmartExpenseControl.Domain.ExpenseGroups.ValueObjects;
 
 namespace SmartExpenseControl.Infrastructure.Configurations;
 

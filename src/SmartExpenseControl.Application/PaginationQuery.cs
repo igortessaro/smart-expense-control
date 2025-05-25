@@ -1,5 +1,5 @@
 using MediatR;
-using SmartExpenseControl.Domain.DataObjectTransfer;
+using SmartExpenseControl.Domain.Shared;
 
 namespace SmartExpenseControl.Application;
 

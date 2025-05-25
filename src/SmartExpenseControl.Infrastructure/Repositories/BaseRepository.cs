@@ -1,6 +1,4 @@
 using Microsoft.EntityFrameworkCore;
-using SmartExpenseControl.Domain.Entities;
-using SmartExpenseControl.Domain.Repositories;
 using SmartExpenseControl.Domain.Shared;
 using SmartExpenseControl.Infrastructure.Data;
 

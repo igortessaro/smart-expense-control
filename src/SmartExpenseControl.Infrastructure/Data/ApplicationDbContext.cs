@@ -1,8 +1,10 @@
 using Microsoft.EntityFrameworkCore;
 using SmartExpenseControl.Domain.ExpenseGroups;
+using SmartExpenseControl.Domain.ExpenseGroups.Entities;
 using SmartExpenseControl.Domain.Settlements;
 using SmartExpenseControl.Domain.Transactions;
 using SmartExpenseControl.Domain.Users;
+using SmartExpenseControl.Domain.Users.Entities;
 using SmartExpenseControl.Infrastructure.Configurations;
 
 namespace SmartExpenseControl.Infrastructure.Data;

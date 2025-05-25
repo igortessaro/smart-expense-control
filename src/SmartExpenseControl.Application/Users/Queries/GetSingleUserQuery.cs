@@ -1,6 +1,6 @@
 using MediatR;
-using SmartExpenseControl.Domain.DataObjectTransfer;
 using SmartExpenseControl.Domain.Shared;
+using SmartExpenseControl.Domain.Users.Models;
 
 namespace SmartExpenseControl.Application.Users.Queries;
 

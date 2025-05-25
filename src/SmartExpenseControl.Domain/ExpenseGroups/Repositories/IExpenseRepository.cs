@@ -1,8 +1,8 @@
-using SmartExpenseControl.Domain.DataObjectTransfer;
-using SmartExpenseControl.Domain.ExpenseGroups;
+using SmartExpenseControl.Domain.ExpenseGroups.Entities;
+using SmartExpenseControl.Domain.ExpenseGroups.Models;
 using SmartExpenseControl.Domain.Shared;
 
-namespace SmartExpenseControl.Domain.Repositories;
+namespace SmartExpenseControl.Domain.ExpenseGroups.Repositories;
 
 public interface IExpenseRepository : IRepository<Expense>
 {

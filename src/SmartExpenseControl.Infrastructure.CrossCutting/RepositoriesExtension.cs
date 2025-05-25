@@ -1,7 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using SmartExpenseControl.Domain.Repositories;
+using SmartExpenseControl.Domain.ExpenseGroups.Repositories;
+using SmartExpenseControl.Domain.Users.Repositories;
 using SmartExpenseControl.Infrastructure.Data;
 using SmartExpenseControl.Infrastructure.Repositories;
 

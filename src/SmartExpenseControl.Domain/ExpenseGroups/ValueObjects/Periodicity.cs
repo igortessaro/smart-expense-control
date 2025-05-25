@@ -1,3 +1,5 @@
+namespace SmartExpenseControl.Domain.ExpenseGroups.ValueObjects;
+
 public sealed class Periodicity
 {
     public static readonly Periodicity Daily = new(1, "daily");

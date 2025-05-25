@@ -1,8 +1,7 @@
-using SmartExpenseControl.Domain.ExpenseGroups;
-using SmartExpenseControl.Domain.Repositories;
+using SmartExpenseControl.Domain.ExpenseGroups.Repositories;
 using SmartExpenseControl.Domain.Shared;
 
-namespace SmartExpenseControl.Domain.Services;
+namespace SmartExpenseControl.Domain.ExpenseGroups.Services;
 
 public sealed class ExpenseGroupService(IExpenseGroupRepository expenseGroupRepository) : IExpenseGroupService
 {

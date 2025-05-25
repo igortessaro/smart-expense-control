@@ -1,7 +1,7 @@
 using SmartExpenseControl.Domain.Shared;
-using SmartExpenseControl.Domain.Users;
+using SmartExpenseControl.Domain.Users.Entities;
 
-namespace SmartExpenseControl.Domain.Repositories;
+namespace SmartExpenseControl.Domain.Users.Repositories;
 
 public interface IUserRoleRepository : IRepository<UserRole>
 {

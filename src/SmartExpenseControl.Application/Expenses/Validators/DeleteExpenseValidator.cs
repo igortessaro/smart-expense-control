@@ -1,6 +1,6 @@
 using FluentValidation;
 using SmartExpenseControl.Application.Expenses.Commands;
-using SmartExpenseControl.Domain.Repositories;
+using SmartExpenseControl.Domain.ExpenseGroups.Repositories;
 
 namespace SmartExpenseControl.Application.Expenses.Validators;
 

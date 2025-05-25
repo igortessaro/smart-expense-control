@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using SmartExpenseControl.Domain.Users;
+using SmartExpenseControl.Domain.Users.Entities;
 
 namespace SmartExpenseControl.Infrastructure.Configurations;
 

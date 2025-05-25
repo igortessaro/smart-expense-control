@@ -1,9 +1,11 @@
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using Microsoft.EntityFrameworkCore;
-using SmartExpenseControl.Domain.DataObjectTransfer;
 using SmartExpenseControl.Domain.ExpenseGroups;
-using SmartExpenseControl.Domain.Repositories;
+using SmartExpenseControl.Domain.ExpenseGroups.Entities;
+using SmartExpenseControl.Domain.ExpenseGroups.Models;
+using SmartExpenseControl.Domain.ExpenseGroups.Repositories;
+using SmartExpenseControl.Domain.Shared;
 using SmartExpenseControl.Infrastructure.Data;
 
 namespace SmartExpenseControl.Infrastructure.Repositories;

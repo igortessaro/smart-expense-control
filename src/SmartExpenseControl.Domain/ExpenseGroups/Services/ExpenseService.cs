@@ -1,7 +1,7 @@
-using SmartExpenseControl.Domain.ExpenseGroups;
-using SmartExpenseControl.Domain.Repositories;
+using SmartExpenseControl.Domain.ExpenseGroups.Entities;
+using SmartExpenseControl.Domain.ExpenseGroups.Repositories;
 
-namespace SmartExpenseControl.Domain.Services;
+namespace SmartExpenseControl.Domain.ExpenseGroups.Services;
 
 public class ExpenseService(IExpenseRepository expenseRepository) : IExpenseService
 {

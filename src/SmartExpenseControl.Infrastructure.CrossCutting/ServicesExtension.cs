@@ -1,5 +1,5 @@
 using Microsoft.Extensions.DependencyInjection;
-using SmartExpenseControl.Domain.Services;
+using SmartExpenseControl.Domain.ExpenseGroups.Services;
 
 namespace SmartExpenseControl.Infrastructure.CrossCutting;
 

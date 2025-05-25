@@ -1,4 +1,4 @@
-namespace SmartExpenseControl.Domain.ExpenseGroups;
+namespace SmartExpenseControl.Domain.ExpenseGroups.Entities;
 
 public sealed class ExpenseApportionment
 {

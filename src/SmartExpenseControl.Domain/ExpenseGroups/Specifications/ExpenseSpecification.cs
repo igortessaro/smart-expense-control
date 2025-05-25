@@ -1,6 +1,6 @@
-using SmartExpenseControl.Domain.ExpenseGroups;
+using SmartExpenseControl.Domain.ExpenseGroups.Entities;
 
-namespace SmartExpenseControl.Domain.Specifications;
+namespace SmartExpenseControl.Domain.ExpenseGroups.Specifications;
 
 public class ExpenseSpecification
 {

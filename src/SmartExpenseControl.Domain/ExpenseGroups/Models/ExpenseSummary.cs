@@ -1,4 +1,4 @@
-namespace SmartExpenseControl.Domain.DataObjectTransfer;
+namespace SmartExpenseControl.Domain.ExpenseGroups.Models;
 
 public record ExpenseSummary
 {

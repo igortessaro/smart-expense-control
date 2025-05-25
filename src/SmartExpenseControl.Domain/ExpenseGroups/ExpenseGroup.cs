@@ -1,3 +1,6 @@
+using SmartExpenseControl.Domain.ExpenseGroups.Entities;
+using SmartExpenseControl.Domain.ExpenseGroups.ValueObjects;
+
 namespace SmartExpenseControl.Domain.ExpenseGroups;
 
 public sealed class ExpenseGroup

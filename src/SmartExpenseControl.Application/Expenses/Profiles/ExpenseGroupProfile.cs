@@ -1,7 +1,7 @@
 using AutoMapper;
 using SmartExpenseControl.Application.Expenses.Commands;
-using SmartExpenseControl.Domain.DataObjectTransfer;
 using SmartExpenseControl.Domain.ExpenseGroups;
+using SmartExpenseControl.Domain.ExpenseGroups.Models;
 
 namespace SmartExpenseControl.Application.Expenses.Profiles;
 

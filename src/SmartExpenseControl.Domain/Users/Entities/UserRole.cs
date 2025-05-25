@@ -1,4 +1,4 @@
-namespace SmartExpenseControl.Domain.Users;
+namespace SmartExpenseControl.Domain.Users.Entities;
 
 public sealed class UserRole
 {

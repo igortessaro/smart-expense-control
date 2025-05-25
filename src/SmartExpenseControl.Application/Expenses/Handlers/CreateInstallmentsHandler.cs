@@ -1,6 +1,6 @@
 using MediatR;
 using SmartExpenseControl.Application.Expenses.Commands;
-using SmartExpenseControl.Domain.DataObjectTransfer;
+using SmartExpenseControl.Domain.ExpenseGroups.Models;
 using SmartExpenseControl.Domain.Shared;
 
 namespace SmartExpenseControl.Application.Expenses.Handlers;

@@ -1,8 +1,7 @@
-using SmartExpenseControl.Domain.DataObjectTransfer;
 using SmartExpenseControl.Domain.Shared;
-using SmartExpenseControl.Domain.Users;
+using SmartExpenseControl.Domain.Users.Models;
 
-namespace SmartExpenseControl.Domain.Repositories;
+namespace SmartExpenseControl.Domain.Users.Repositories;
 
 public interface IUserRepository : IRepository<User>
 {

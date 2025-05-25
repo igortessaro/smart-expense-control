@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
-using SmartExpenseControl.Domain.Repositories;
 using SmartExpenseControl.Domain.Users;
+using SmartExpenseControl.Domain.Users.Entities;
+using SmartExpenseControl.Domain.Users.Repositories;
 using SmartExpenseControl.Infrastructure.Data;
 
 namespace SmartExpenseControl.Infrastructure.Repositories;

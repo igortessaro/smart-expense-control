@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Cryptography.KeyDerivation;
+using SmartExpenseControl.Domain.Users.Entities;
 using System.Security.Cryptography;
 
 namespace SmartExpenseControl.Domain.Users;

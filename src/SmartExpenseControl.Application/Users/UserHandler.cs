@@ -2,10 +2,11 @@ using AutoMapper;
 using MediatR;
 using SmartExpenseControl.Application.Users.Commands;
 using SmartExpenseControl.Application.Users.Queries;
-using SmartExpenseControl.Domain.DataObjectTransfer;
-using SmartExpenseControl.Domain.Repositories;
 using SmartExpenseControl.Domain.Shared;
 using SmartExpenseControl.Domain.Users;
+using SmartExpenseControl.Domain.Users.Entities;
+using SmartExpenseControl.Domain.Users.Models;
+using SmartExpenseControl.Domain.Users.Repositories;
 
 namespace SmartExpenseControl.Application.Users;
 

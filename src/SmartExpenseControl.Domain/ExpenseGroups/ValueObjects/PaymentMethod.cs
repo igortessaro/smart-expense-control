@@ -1,4 +1,4 @@
-namespace SmartExpenseControl.Domain.ExpenseGroups;
+namespace SmartExpenseControl.Domain.ExpenseGroups.ValueObjects;
 
 public sealed class PaymentMethod
 {
