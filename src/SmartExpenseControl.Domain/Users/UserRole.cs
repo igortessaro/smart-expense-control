@@ -1,4 +1,4 @@
-namespace SmartExpenseControl.Domain.Entities;
+namespace SmartExpenseControl.Domain.Users;
 
 public sealed class UserRole
 {
@@ -13,6 +13,5 @@ public sealed class UserRole
     public int Id { get; private set; }
     public string Name { get; private set; } = string.Empty;
     public string Description { get; private set; } = string.Empty;
-
     public IList<User> Users { get; private set; } = [];
 }

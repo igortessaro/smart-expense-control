@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using SmartExpenseControl.Domain.Entities;
+using SmartExpenseControl.Domain.Users;
 using SmartExpenseControl.Infrastructure.Configurations;
 
 namespace SmartExpenseControl.Infrastructure.Data;

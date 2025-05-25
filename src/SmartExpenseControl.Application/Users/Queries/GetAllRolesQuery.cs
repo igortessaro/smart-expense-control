@@ -1,6 +1,6 @@
 using MediatR;
-using SmartExpenseControl.Domain.Entities;
 using SmartExpenseControl.Domain.Notification;
+using SmartExpenseControl.Domain.Users;
 
 namespace SmartExpenseControl.Application.Users.Queries;
 

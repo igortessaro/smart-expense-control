@@ -3,9 +3,9 @@ using MediatR;
 using SmartExpenseControl.Application.Users.Commands;
 using SmartExpenseControl.Application.Users.Queries;
 using SmartExpenseControl.Domain.DataObjectTransfer;
-using SmartExpenseControl.Domain.Entities;
 using SmartExpenseControl.Domain.Notification;
 using SmartExpenseControl.Domain.Repositories;
+using SmartExpenseControl.Domain.Users;
 
 namespace SmartExpenseControl.Application.Users;
 
