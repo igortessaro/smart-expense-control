@@ -1,0 +1,26 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "type": "dotnet",
+            "task": "build",
+            "group": "build",
+            "problemMatcher": [],
+            "label": "dotnet: build"
+        },
+        {
+            "type": "dotnet",
+            "task": "clean",
+            "group": "clean",
+            "problemMatcher": [],
+            "label": "dotnet: clean"
+        },
+        {
+            "type": "dotnet",
+            "task": "watch SmartExpenseControl.Api",
+            "file": "/Users/igortessaro/Documents/repos/personal/smart-expense-control/src/SmartExpenseControl.Api/SmartExpenseControl.Api.csproj",
+            "problemMatcher": [],
+            "label": "dotnet: watch SmartExpenseControl.Api"
+        }
+    ]
+}
