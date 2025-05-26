@@ -8,7 +8,7 @@ public sealed class UserConfiguration : IEntityTypeConfiguration<User>
 {
     public void Configure(EntityTypeBuilder<User> builder)
     {
-        builder.ToTable("Users");
+        builder.ToTable("users");
         builder.HasKey(x => x.Id).HasName("id");
         builder.Property(x => x.Id).ValueGeneratedOnAdd();
         builder.Property(x => x.UserName).HasColumnName("username").HasMaxLength(255).IsRequired();
