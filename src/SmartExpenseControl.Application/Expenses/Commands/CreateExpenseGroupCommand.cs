@@ -4,9 +4,13 @@ using SmartExpenseControl.Domain.Shared;
 
 namespace SmartExpenseControl.Application.Expenses.Commands;
 
-public record CreateExpenseGroupCommand() : IRequest<Notification<ExpenseGroupSummary>>
-{
-    public string Name { get; init; } = string.Empty;
-    public string Description { get; init; } = string.Empty;
-    public int CreatedBy { get; init; }
-}
+public record CreateExpenseGroupCommand(
+    string Name,
+    string Description,
+    string Periodicity,
+    int CreatedBy,
+    IReadOnlyList<int> Users,
+    IReadOnlyList<CreateExpenseType> ExpenseTypes)
+    : IRequest<Notification<ExpenseGroupSummary>>;
+
+public record CreateExpenseType(string Name, decimal? Limit);

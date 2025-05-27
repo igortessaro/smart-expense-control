@@ -1,6 +1,5 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using SmartExpenseControl.Domain.ExpenseGroups;
 using SmartExpenseControl.Domain.ExpenseGroups.Entities;
 
 namespace SmartExpenseControl.Infrastructure.Configurations;
@@ -21,8 +20,8 @@ public sealed class ExpenseTypeConfiguration : IEntityTypeConfiguration<ExpenseT
             .HasMaxLength(255)
             .IsRequired();
 
-        builder.Property(x => x.Description)
-            .HasColumnName("description");
+        builder.Property(x => x.Limit)
+            .HasColumnName("limit");
 
         builder.Property(x => x.ExpenseGroupId)
             .HasColumnName("expense_group_id")
