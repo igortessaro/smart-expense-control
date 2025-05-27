@@ -22,6 +22,8 @@ public sealed class UserRepository(ApplicationDbContext context, IMapper mapper)
 
     public Task<bool> ExistsAsync(int id) => Query().AnyAsync(x => x.Id == id);
 
+    public Task<bool> ExistsAsync(IReadOnlyList<int> ids) => Query().AllAsync(x => ids.Contains(x.Id));
+
     public Task<UserSummary> GetByIdAsync(int id) => Query()
         .Include(x => x.Role)
         .Where(x => x.Id == id)

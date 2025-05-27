@@ -45,7 +45,7 @@ CREATE TABLE `expense_groups` (
 CREATE TABLE `expense_types` (
     `id` INT AUTO_INCREMENT PRIMARY KEY COMMENT 'Primary key for expense_types',
     `name` VARCHAR(255) NOT NULL COMMENT 'Type name (unique within group)',
-    `description` TEXT COMMENT 'Description of the expense type',
+    `limit` DECIMAL(18,2) COMMENT 'Monetary limit for this type',
     `expense_group_id` INT NOT NULL COMMENT 'Foreign key to expense_groups',
     CONSTRAINT uq_expense_types_group_name UNIQUE (`expense_group_id`, `name`),
     INDEX idx_expense_types_expense_group_id (`expense_group_id`),

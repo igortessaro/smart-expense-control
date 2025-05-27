@@ -7,5 +7,6 @@ public interface IUserRepository : IRepository<User>
 {
     Task<bool> ExistsAsync(string email, string username, int? isNotUserId = null);
     Task<bool> ExistsAsync(int id);
+    Task<bool> ExistsAsync(IReadOnlyList<int> ids);
     Task<UserSummary> GetByIdAsync(int id);
 }

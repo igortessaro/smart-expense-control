@@ -10,7 +10,7 @@ public record CreateExpenseGroupCommand(
     string Periodicity,
     int CreatedBy,
     IReadOnlyList<int> Users,
-    IReadOnlyList<CreateExpenseType> ExpenseTypes)
+    IReadOnlyList<CreateExpenseTypeCommand> ExpenseTypes)
     : IRequest<Notification<ExpenseGroupSummary>>;
 
-public record CreateExpenseType(string Name, decimal? Limit);
+public record CreateExpenseTypeCommand(string Name, decimal? Limit);

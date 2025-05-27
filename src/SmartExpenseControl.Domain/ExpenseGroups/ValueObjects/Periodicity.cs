@@ -20,9 +20,14 @@ public sealed class Periodicity
 
     public static IEnumerable<Periodicity> ToList() => [Daily, Weekly, BiWeekly, Monthly, Yearly, OneTime];
 
-    public static Periodicity FromName(string name) =>
-        ToList().FirstOrDefault(x => x.Name == name)
-        ?? throw new ArgumentException($"Invalid Periodicity name: {name}");
+    public static Periodicity FromName(string name) => FromName(name, true)!;
+
+    public static Periodicity? FromName(string name, bool throwException)
+    {
+        var result = ToList().FirstOrDefault(x => x.Name.Equals(name, StringComparison.OrdinalIgnoreCase));
+        if (result is not null || !throwException) return result;
+        throw new ArgumentException($"Invalid Periodicity name: {name}");
+    }
 
     public static Periodicity FromId(int id) =>
         ToList().FirstOrDefault(x => x.Id == id)
